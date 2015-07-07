@@ -773,4 +773,34 @@ public class Material {
             return resource;
         }
     }
+
+    public enum Monochrome implements IColor {
+
+        Black("#000000", R.color.md_black_1000),
+        White("#FFFFFF", R.color.md_white_1000);
+
+        String color;
+        int resource;
+
+        Monochrome(String color, int resource) {
+            this.color = color;
+            this.resource = resource;
+        }
+
+        @Override
+        public String getAsString() {
+            return color;
+        }
+
+        @Override
+        public int getAsColor() {
+            return Color.parseColor(color);
+        }
+
+        @Override
+        public int getAsResource() {
+            return resource;
+        }
+    }
+
 }
