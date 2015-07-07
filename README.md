@@ -1,6 +1,7 @@
 #Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)
-
 [![Join the chat at https://gitter.im/mikepenz/materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+##THIS IS STILL WORK IN PROGRESS! USE IT WITH CAUTION AT THE MOMENT
 
 A easy helper library for Android to manage your applications StatusBarShadow, FullScreen behavior and much more over API Levels down to 10
 
