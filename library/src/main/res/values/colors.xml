@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material DEFAULT colors -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimaryLight">#BBDEFB</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="window_background">#F9F9F9</color>
+
+    <!-- Material DEFAULT colors -->
+    <!-- chained the primary, primaryDark, primaryLight, accent colors for greater compatibility -->
+    <color name="primary">@color/colorPrimary</color>
+    <color name="primary_dark">@color/colorPrimaryDark</color>
+    <color name="primary_light">@color/colorPrimaryLight</color>
+    <color name="accent">@color/colorAccent</color>
+    <color name="material_drawer_primary">@color/primary</color>
+    <color name="material_drawer_primary_dark">@color/primary_dark</color>
+    <color name="material_drawer_primary_light">@color/primary_light</color>
+    <color name="material_drawer_accent">@color/accent</color>
+
+    <!-- AboutLibraries colors
+    <color name="theme_window_background">#303030</color>
+    <color name="about_libraries_card">#666666</color>
+    <color name="about_libraries_title_openSource">#ffffffff</color>
+    <color name="about_libraries_text_openSource">#DEDEDE</color>
+    <color name="about_libraries_dividerDark_openSource">#303030</color>
+    <color name="about_libraries_dividerLight_openSource">#303030</color>
+    -->
+</resources>
