@@ -10,15 +10,15 @@ A easy helper library for Android to manage your applications StatusBarShadow, F
 To follow
 
 ##Screenshots
-![Image](https://raw.githubusercontent.com/mikepenz/MaterialDrawer/master/DEV/screenshots/screenshot1_small.png)
-![Image](https://raw.githubusercontent.com/mikepenz/MaterialDrawer/master/DEV/screenshots/screenshot2_small.png)
+![Image](https://raw.githubusercontent.com/mikepenz/Materialize/master/DEV/screenshots/screenshot1_small.png)
+![Image](https://raw.githubusercontent.com/mikepenz/Materialize/master/DEV/screenshots/screenshot2_small.png)
 
-![Image](https://raw.githubusercontent.com/mikepenz/MaterialDrawer/master/DEV/screenshots/screenshot3_small.png)
+![Image](https://raw.githubusercontent.com/mikepenz/Materialize/master/DEV/screenshots/screenshot3_small.png)
 
 
 #Include in your project
 ##Using Maven
-The MaterialDrawer Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
+The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
 compile('com.mikepenz:materialize:0.0.1-SNAPSHOT@aar') {

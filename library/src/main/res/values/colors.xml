@@ -14,10 +14,10 @@
     <color name="primary_dark">@color/colorPrimaryDark</color>
     <color name="primary_light">@color/colorPrimaryLight</color>
     <color name="accent">@color/colorAccent</color>
-    <color name="material_drawer_primary">@color/primary</color>
-    <color name="material_drawer_primary_dark">@color/primary_dark</color>
-    <color name="material_drawer_primary_light">@color/primary_light</color>
-    <color name="material_drawer_accent">@color/accent</color>
+    <color name="materialize_primary">@color/primary</color>
+    <color name="materialize_primary_dark">@color/primary_dark</color>
+    <color name="materialize_primary_light">@color/primary_light</color>
+    <color name="materialize_accent">@color/accent</color>
 
     <!-- AboutLibraries colors
     <color name="theme_window_background">#303030</color>

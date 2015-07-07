@@ -23,9 +23,9 @@
         <item name="drawerArrowStyle">@style/Material.DrawerArrowStyle</item>
 
         <!-- ...and here we setting appcompat’s color theming attrs -->
-        <item name="colorPrimary">@color/material_drawer_primary</item>
-        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
 
         <!-- Material specific values -->
     </style>
@@ -49,9 +49,9 @@
         <item name="drawerArrowStyle">@style/Material.Light.DrawerArrowStyle</item>
 
         <!-- ...and here we setting appcompat’s color theming attrs -->
-        <item name="colorPrimary">@color/material_drawer_primary</item>
-        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
 
         <!-- Material specific values -->
     </style>
@@ -80,9 +80,9 @@
 
 
         <!-- ...and here we setting appcompat’s color theming attrs -->
-        <item name="colorPrimary">@color/material_drawer_primary</item>
-        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
 
         <!-- Material specific values -->
     </style>

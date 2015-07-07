@@ -22,7 +22,7 @@ public class MaterializeBuilder {
     // the activity to use
     protected Activity mActivity;
     protected ViewGroup mRootView;
-    protected ScrimInsetsFrameLayout mDrawerContentRoot;
+    protected ScrimInsetsFrameLayout mContentRoot;
 
 
     /**
@@ -236,7 +236,7 @@ public class MaterializeBuilder {
         mUsed = true;
 
         // if the user has not set a drawerLayout use the default one :D
-        mDrawerContentRoot = (ScrimInsetsFrameLayout) mActivity.getLayoutInflater().inflate(R.layout.materialize, mRootView, false);
+        mContentRoot = (ScrimInsetsFrameLayout) mActivity.getLayoutInflater().inflate(R.layout.materialize, mRootView, false);
 
         //check if the activity was initialized correctly
         if (mRootView == null || mRootView.getChildCount() == 0) {
@@ -263,15 +263,15 @@ public class MaterializeBuilder {
                     mActivity.getWindow().setStatusBarColor(Color.TRANSPARENT);
                 }
             }
-            mDrawerContentRoot.setPadding(0, UIUtils.getStatusBarHeight(mActivity), 0, 0);
+            mContentRoot.setPadding(0, UIUtils.getStatusBarHeight(mActivity), 0, 0);
 
             // define the statusBarColor
             if (mStatusBarColor == 0 && mStatusBarColorRes != -1) {
                 mStatusBarColor = mActivity.getResources().getColor(mStatusBarColorRes);
             } else if (mStatusBarColor == 0) {
-                mStatusBarColor = UIUtils.getThemeColorFromAttrOrRes(mActivity, R.attr.colorPrimaryDark, R.color.material_drawer_primary_dark);
+                mStatusBarColor = UIUtils.getThemeColorFromAttrOrRes(mActivity, R.attr.colorPrimaryDark, R.color.materialize_primary_dark);
             }
-            mDrawerContentRoot.setInsetForeground(mStatusBarColor);
+            mContentRoot.setInsetForeground(mStatusBarColor);
         }
 
         //do some magic specific to the navigationBar
@@ -294,7 +294,7 @@ public class MaterializeBuilder {
 
         //if we are fullscreen disable the ScrimInsetsLayout
         if (mFullscreen && Build.VERSION.SDK_INT >= 19) {
-            mDrawerContentRoot.setEnabled(false);
+            mContentRoot.setEnabled(false);
         }
 
         //only add the new layout if it wasn't done before
@@ -318,10 +318,10 @@ public class MaterializeBuilder {
         }
 
         //add the contentView to the drawer content frameLayout
-        mDrawerContentRoot.addView(contentView, layoutParamsContentView);
+        mContentRoot.addView(contentView, layoutParamsContentView);
 
         //add the drawerLayout to the root
-        mRootView.addView(mDrawerContentRoot, new ViewGroup.LayoutParams(
+        mRootView.addView(mContentRoot, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
         ));

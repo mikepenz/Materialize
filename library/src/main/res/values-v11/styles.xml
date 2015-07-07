@@ -63,9 +63,9 @@
 
     <!-- General Theme override to change the Dialog design -->
     <style name="MaterialBaseTheme.Dialog" parent="Theme.AppCompat.Dialog">
-        <item name="colorPrimary">@color/material_drawer_primary</item>
-        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
     </style>
 
     <style name="MaterialBaseTheme.AlertDialog" parent="MaterialBaseTheme.Dialog">
@@ -74,9 +74,9 @@
     </style>
 
     <style name="MaterialBaseTheme.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorPrimary">@color/material_drawer_primary</item>
-        <item name="colorPrimaryDark">@color/material_drawer_primary_dark</item>
-        <item name="colorAccent">@color/material_drawer_accent</item>
+        <item name="colorPrimary">@color/materialize_primary</item>
+        <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
+        <item name="colorAccent">@color/materialize_accent</item>
     </style>
 
     <style name="MaterialBaseTheme.Light.AlertDialog" parent="MaterialBaseTheme.Light.Dialog">

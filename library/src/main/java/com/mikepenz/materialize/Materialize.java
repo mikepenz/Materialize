@@ -9,17 +9,16 @@ import com.mikepenz.materialize.view.ScrimInsetsFrameLayout;
  * Created by mikepenz on 07.07.15.
  */
 public class Materialize {
-    private final MaterializeBuilder mDrawerBuilder;
-    private ScrimInsetsFrameLayout mContentView;
+    private final MaterializeBuilder mBuilder;
     private KeyboardUtil mKeyboardUtil = null;
 
     /**
      * the protected Constructor for the result
      *
-     * @param drawerBuilder
+     * @param materializeBuilder
      */
-    protected Materialize(MaterializeBuilder drawerBuilder) {
-        this.mDrawerBuilder = drawerBuilder;
+    protected Materialize(MaterializeBuilder materializeBuilder) {
+        this.mBuilder = materializeBuilder;
     }
 
     /**
@@ -29,8 +28,8 @@ public class Materialize {
      * @param fullscreen
      */
     public void setFullscreen(boolean fullscreen) {
-        if (mDrawerBuilder.mDrawerContentRoot != null) {
-            mDrawerBuilder.mDrawerContentRoot.setEnabled(!fullscreen);
+        if (mBuilder.mContentRoot != null) {
+            mBuilder.mContentRoot.setEnabled(!fullscreen);
         }
     }
 
@@ -40,23 +39,23 @@ public class Materialize {
      * @param statusBarColor
      */
     public void setStatusBarColor(int statusBarColor) {
-        if (mDrawerBuilder.mDrawerContentRoot != null) {
-            mDrawerBuilder.mDrawerContentRoot.setInsetForeground(statusBarColor);
-            mDrawerBuilder.mDrawerContentRoot.invalidate();
+        if (mBuilder.mContentRoot != null) {
+            mBuilder.mContentRoot.setInsetForeground(statusBarColor);
+            mBuilder.mContentRoot.invalidate();
         }
     }
 
     /**
-     * get the drawerContentRoot Layout (ScrimInsetsFrameLayout)
+     * get the materializeContentRoot Layout (ScrimInsetsFrameLayout)
      *
      * @return
      */
     public ScrimInsetsFrameLayout getScrimInsetsFrameLayout() {
-        return mDrawerBuilder.mDrawerContentRoot;
+        return mBuilder.mContentRoot;
     }
 
     /**
-     * get the drawerContentRoot Layout (ScrimInsetsFrameLayout)
+     * get the materializeContentRoot Layout (ScrimInsetsFrameLayout)
      *
      * @return
      */
