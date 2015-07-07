@@ -10,10 +10,10 @@ A easy helper library for Android to manage your applications StatusBarShadow, F
 To follow
 
 ##Screenshots
-![Image](https://raw.githubusercontent.com/mikepenz/Materialize/master/DEV/screenshots/screenshot1_small.png)
-![Image](https://raw.githubusercontent.com/mikepenz/Materialize/master/DEV/screenshots/screenshot2_small.png)
+![Image](https://raw.githubusercontent.com/mikepenz/Materialize/develop/DEV/screenshots/screenshot1_small.png)
+![Image](https://raw.githubusercontent.com/mikepenz/Materialize/develop/DEV/screenshots/screenshot2_small.png)
 
-![Image](https://raw.githubusercontent.com/mikepenz/Materialize/master/DEV/screenshots/screenshot3_small.png)
+![Image](https://raw.githubusercontent.com/mikepenz/Materialize/develop/DEV/screenshots/screenshot3_small.png)
 
 
 #Include in your project
