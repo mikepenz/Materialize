@@ -29,7 +29,8 @@ public class Materialize {
      */
     public void setFullscreen(boolean fullscreen) {
         if (mBuilder.mContentRoot != null) {
-            mBuilder.mContentRoot.setEnabled(!fullscreen);
+            mBuilder.mContentRoot.setTintStatusBar(!fullscreen);
+            mBuilder.mContentRoot.setTintNavigationBar(!fullscreen);
         }
     }
 

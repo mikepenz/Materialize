@@ -40,7 +40,8 @@ public class ScrimInsetsFrameLayout extends FrameLayout {
     private Rect mTempRect = new Rect();
     private OnInsetsCallback mOnInsetsCallback;
 
-    private boolean mEnabled = true;
+    private boolean mTintStatusBar = true;
+    private boolean mTintNavigationBar = true;
 
     public ScrimInsetsFrameLayout(Context context) {
         super(context);
@@ -91,14 +92,18 @@ public class ScrimInsetsFrameLayout extends FrameLayout {
             canvas.translate(getScrollX(), getScrollY());
 
             // Top
-            mTempRect.set(0, 0, width, mInsets.top);
-            mInsetForeground.setBounds(mTempRect);
-            mInsetForeground.draw(canvas);
+            if (mTintStatusBar) {
+                mTempRect.set(0, 0, width, mInsets.top);
+                mInsetForeground.setBounds(mTempRect);
+                mInsetForeground.draw(canvas);
+            }
 
             // Bottom
-            mTempRect.set(0, height - mInsets.bottom, width, height);
-            mInsetForeground.setBounds(mTempRect);
-            mInsetForeground.draw(canvas);
+            if (mTintNavigationBar) {
+                mTempRect.set(0, height - mInsets.bottom, width, height);
+                mInsetForeground.setBounds(mTempRect);
+                mInsetForeground.draw(canvas);
+            }
 
             // Left
             mTempRect.set(0, mInsets.top, mInsets.left, height - mInsets.bottom);
@@ -130,18 +135,6 @@ public class ScrimInsetsFrameLayout extends FrameLayout {
         }
     }
 
-
-    public boolean isEnabled() {
-        return mEnabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.mEnabled = enabled;
-        //setWillNotDraw(false);
-        invalidate();
-    }
-
-
     public Drawable getInsetForeground() {
         return mInsetForeground;
     }
@@ -152,6 +145,22 @@ public class ScrimInsetsFrameLayout extends FrameLayout {
 
     public void setInsetForeground(int mInsetForegroundColor) {
         this.mInsetForeground = new ColorDrawable(mInsetForegroundColor);
+    }
+
+    public boolean isTintStatusBar() {
+        return mTintStatusBar;
+    }
+
+    public void setTintStatusBar(boolean mTintStatusBar) {
+        this.mTintStatusBar = mTintStatusBar;
+    }
+
+    public boolean isTintNavigationBar() {
+        return mTintNavigationBar;
+    }
+
+    public void setTintNavigationBar(boolean mTintNavigationBar) {
+        this.mTintNavigationBar = mTintNavigationBar;
     }
 
     /**

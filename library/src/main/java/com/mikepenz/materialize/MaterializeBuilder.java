@@ -148,18 +148,17 @@ public class MaterializeBuilder {
         return this;
     }
 
-    // defines if we want the statusBarShadow to be used in the Drawer
-    protected Boolean mTranslucentStatusBarShadow = null;
+    // set if the ScrimInsetsLayout should tint the StatusBar
+    protected boolean mTintStatusBar = true;
 
     /**
-     * set this to true or false if you want activate or deactivate this
-     * set it to null if you want the default behavior (activated for lollipop and up)
+     * set if the ScrimInsetsLayout should tint the StatusBar
      *
-     * @param translucentStatusBarShadow
+     * @param tintedStatusBar
      * @return
      */
-    public MaterializeBuilder withTranslucentStatusBarShadow(Boolean translucentStatusBarShadow) {
-        this.mTranslucentStatusBarShadow = translucentStatusBarShadow;
+    public MaterializeBuilder withTintedStatusBar(boolean tintedStatusBar) {
+        this.mTintStatusBar = tintedStatusBar;
         return this;
     }
 
@@ -201,6 +200,24 @@ public class MaterializeBuilder {
         return this;
     }
 
+    // set if the ScrimInsetsLayout should tint the NavigationBar
+    protected boolean mTintNavigationBar = false;
+
+    /**
+     * set if the ScrimInsetsLayout should tint the NavigationBar
+     *
+     * @param tintedNavigationBar
+     * @return
+     */
+    public MaterializeBuilder withTintedNavigationBar(boolean tintedNavigationBar) {
+        this.mTintNavigationBar = tintedNavigationBar;
+
+        if (tintedNavigationBar) {
+            withTranslucentNavigationBarProgrammatically(true);
+        }
+
+        return this;
+    }
 
     // set non translucent NavigationBar mode
     protected boolean mFullscreen = false;
@@ -218,6 +235,8 @@ public class MaterializeBuilder {
         if (fullscreen) {
             withTranslucentStatusBar(false);
             withTranslucentNavigationBarProgrammatically(true);
+            withTintedStatusBar(false);
+            withTintedNavigationBar(false);
         }
 
         return this;
@@ -247,6 +266,18 @@ public class MaterializeBuilder {
         View contentView = mRootView.getChildAt(0);
         boolean alreadyInflated = contentView instanceof ScrimInsetsFrameLayout;
 
+        // define the statusBarColor
+        if (mStatusBarColor == 0 && mStatusBarColorRes != -1) {
+            mStatusBarColor = mActivity.getResources().getColor(mStatusBarColorRes);
+        } else if (mStatusBarColor == 0) {
+            mStatusBarColor = UIUtils.getThemeColorFromAttrOrRes(mActivity, R.attr.colorPrimaryDark, R.color.materialize_primary_dark);
+        }
+
+        //handling statusBar / navigationBar tinting
+        mContentRoot.setInsetForeground(mStatusBarColor);
+        mContentRoot.setTintStatusBar(mTintStatusBar);
+        mContentRoot.setTintNavigationBar(mTintNavigationBar);
+
         //do some magic specific to the statusBar
         if (!alreadyInflated && mTranslucentStatusBar) {
             if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
@@ -264,14 +295,6 @@ public class MaterializeBuilder {
                 }
             }
             mContentRoot.setPadding(0, UIUtils.getStatusBarHeight(mActivity), 0, 0);
-
-            // define the statusBarColor
-            if (mStatusBarColor == 0 && mStatusBarColorRes != -1) {
-                mStatusBarColor = mActivity.getResources().getColor(mStatusBarColorRes);
-            } else if (mStatusBarColor == 0) {
-                mStatusBarColor = UIUtils.getThemeColorFromAttrOrRes(mActivity, R.attr.colorPrimaryDark, R.color.materialize_primary_dark);
-            }
-            mContentRoot.setInsetForeground(mStatusBarColor);
         }
 
         //do some magic specific to the navigationBar
@@ -290,11 +313,6 @@ public class MaterializeBuilder {
                     mActivity.getWindow().setNavigationBarColor(Color.TRANSPARENT);
                 }
             }
-        }
-
-        //if we are fullscreen disable the ScrimInsetsLayout
-        if (mFullscreen && Build.VERSION.SDK_INT >= 19) {
-            mContentRoot.setEnabled(false);
         }
 
         //only add the new layout if it wasn't done before
