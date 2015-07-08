@@ -8,6 +8,83 @@ import com.mikepenz.materialize.R;
  * Created by mikepenz on 07.07.15.
  */
 public class Material {
+
+    public static class Elements {
+
+        /**
+         * for light backgrounds
+         */
+        public enum Light implements IColor {
+            ICON("#8A000000", R.color.light_primary_icon),
+            TEXT("#DE000000", R.color.light_primary_text),
+            SECONDARY_TEXT("#8A000000", R.color.light_secondary),
+            SECONDARY_ICON("#8A000000", R.color.light_secondary),
+            DISABLED_TEXT("#42000000", R.color.light_disabled),
+            HINT_TEXT("#42000000", R.color.light_disabled),
+            DIVIDER("#1F000000", R.color.light_dividers);
+
+            String color;
+            int resource;
+
+            Light(String color, int resource) {
+                this.color = color;
+                this.resource = resource;
+            }
+
+            @Override
+            public String getAsString() {
+                return color;
+            }
+
+            @Override
+            public int getAsColor() {
+                return Color.parseColor(color);
+            }
+
+            @Override
+            public int getAsResource() {
+                return resource;
+            }
+        }
+
+        /**
+         * for dark backgrounds
+         */
+        public enum Dark implements IColor {
+            ICON("#8AFFFFFF", R.color.dark_primary_icon),
+            TEXT("#DEFFFFFF", R.color.dark_primary_text),
+            SECONDARY_TEXT("#8AFFFFFF", R.color.dark_secondary),
+            SECONDARY_ICON("#8AFFFFFF", R.color.dark_secondary),
+            DISABLED_TEXT("#42FFFFFF", R.color.dark_disabled),
+            HINT_TEXT("#42FFFFFF", R.color.dark_disabled),
+            DIVIDER("#1FFFFFFF", R.color.dark_dividers);
+
+            String color;
+            int resource;
+
+            Dark(String color, int resource) {
+                this.color = color;
+                this.resource = resource;
+            }
+
+            @Override
+            public String getAsString() {
+                return color;
+            }
+
+            @Override
+            public int getAsColor() {
+                return Color.parseColor(color);
+            }
+
+            @Override
+            public int getAsResource() {
+                return resource;
+            }
+        }
+    }
+
+
     public enum Red implements IColor {
         _50("#FFEBEE", R.color.md_red_50),
         _100("#FFCDD2", R.color.md_red_100),
@@ -774,15 +851,14 @@ public class Material {
         }
     }
 
-    public enum Monochrome implements IColor {
+    public enum Black implements IColor {
 
-        Black("#000000", R.color.md_black_1000),
-        White("#FFFFFF", R.color.md_white_1000);
+        _1000("#000000", R.color.md_black_1000);
 
         String color;
         int resource;
 
-        Monochrome(String color, int resource) {
+        Black(String color, int resource) {
             this.color = color;
             this.resource = resource;
         }
@@ -803,4 +879,32 @@ public class Material {
         }
     }
 
+
+    public enum White implements IColor {
+
+        _1000("#FFFFFF", R.color.md_white_1000);
+
+        String color;
+        int resource;
+
+        White(String color, int resource) {
+            this.color = color;
+            this.resource = resource;
+        }
+
+        @Override
+        public String getAsString() {
+            return color;
+        }
+
+        @Override
+        public int getAsColor() {
+            return Color.parseColor(color);
+        }
+
+        @Override
+        public int getAsResource() {
+            return resource;
+        }
+    }
 }
