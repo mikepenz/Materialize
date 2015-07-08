@@ -10,7 +10,7 @@
         A easy helper library for Android to manage your applications StatusBarShadow, FullScreen behavior and much more over API Levels down to 10.
         ]]>
     </string>
-    <string name="library_materialdrawer_libraryVersion">0.0.1-SNAPSHOT</string>
+    <string name="library_materialdrawer_libraryVersion">0.0.2-SNAPSHOT</string>
     <string name="library_materialdrawer_libraryWebsite">https://github.com/mikepenz/Materialize</string>
     <string name="library_materialdrawer_licenseId">apache_2_0</string>
     <string name="library_materialdrawer_isOpenSource">true</string>
