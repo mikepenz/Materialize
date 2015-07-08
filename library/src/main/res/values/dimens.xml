@@ -1,0 +1,4 @@
+<resources>
+    <!-- Toolbar Padding -->
+    <dimen name="tool_bar_top_padding">0dp</dimen>
+</resources>
