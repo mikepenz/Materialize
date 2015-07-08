@@ -20,6 +20,7 @@ public class SimpleMaterialize extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         new MaterializeBuilder().withActivity(this).build();
+        //new MaterializeBuilder().withActivity(this).withFullscreen(true).withTranslucentStatusBar(true).withTintedStatusBar(true).build();
 
         //init and show about libraries :D
         LibsFragment fragment = new LibsBuilder().withFields(R.string.class.getFields()).withVersionShown(true).withLicenseShown(true).fragment();
