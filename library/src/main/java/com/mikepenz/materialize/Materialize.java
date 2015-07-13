@@ -1,9 +1,10 @@
 package com.mikepenz.materialize;
 
 import android.app.Activity;
+import android.view.ViewGroup;
 
 import com.mikepenz.materialize.util.KeyboardUtil;
-import com.mikepenz.materialize.view.ScrimInsetsFrameLayout;
+import com.mikepenz.materialize.view.IScrimInsetsLayout;
 
 /**
  * Created by mikepenz on 07.07.15.
@@ -28,9 +29,31 @@ public class Materialize {
      * @param fullscreen
      */
     public void setFullscreen(boolean fullscreen) {
-        if (mBuilder.mContentRoot != null) {
-            mBuilder.mContentRoot.setTintStatusBar(!fullscreen);
-            mBuilder.mContentRoot.setTintNavigationBar(!fullscreen);
+        if (mBuilder.mScrimInsetsLayout != null) {
+            mBuilder.mScrimInsetsLayout.setTintStatusBar(!fullscreen);
+            mBuilder.mScrimInsetsLayout.setTintNavigationBar(!fullscreen);
+        }
+    }
+
+    /**
+     * enable StatusBar tinting of the ScrimInsetsLayout
+     *
+     * @param tintStatusBar
+     */
+    public void setTintStatusBar(boolean tintStatusBar) {
+        if (mBuilder.mScrimInsetsLayout != null) {
+            mBuilder.mScrimInsetsLayout.setTintStatusBar(tintStatusBar);
+        }
+    }
+
+    /**
+     * enable navigationBar tinting of the ScrimInsetsLayout
+     *
+     * @param tintNavigationBar
+     */
+    public void setTintNavigationBar(boolean tintNavigationBar) {
+        if (mBuilder.mScrimInsetsLayout != null) {
+            mBuilder.mScrimInsetsLayout.setTintNavigationBar(tintNavigationBar);
         }
     }
 
@@ -40,9 +63,9 @@ public class Materialize {
      * @param statusBarColor
      */
     public void setStatusBarColor(int statusBarColor) {
-        if (mBuilder.mContentRoot != null) {
-            mBuilder.mContentRoot.setInsetForeground(statusBarColor);
-            mBuilder.mContentRoot.invalidate();
+        if (mBuilder.mScrimInsetsLayout != null) {
+            mBuilder.mScrimInsetsLayout.setInsetForeground(statusBarColor);
+            mBuilder.mScrimInsetsLayout.getView().invalidate();
         }
     }
 
@@ -51,17 +74,17 @@ public class Materialize {
      *
      * @return
      */
-    public ScrimInsetsFrameLayout getScrimInsetsFrameLayout() {
-        return mBuilder.mContentRoot;
+    public IScrimInsetsLayout getScrimInsetsFrameLayout() {
+        return mBuilder.mScrimInsetsLayout;
     }
 
     /**
-     * get the materializeContentRoot Layout (ScrimInsetsFrameLayout)
+     * get the materializeContentRoot Layout
      *
      * @return
      */
-    public ScrimInsetsFrameLayout getContent() {
-        return getScrimInsetsFrameLayout();
+    public ViewGroup getContent() {
+        return mBuilder.mContentRoot;
     }
 
 
