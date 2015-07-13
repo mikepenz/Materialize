@@ -15,13 +15,13 @@ public class Material {
          * for light backgrounds
          */
         public enum Light implements IColor {
-            ICON("#8A000000", R.color.light_primary_icon),
-            TEXT("#DE000000", R.color.light_primary_text),
-            SECONDARY_TEXT("#8A000000", R.color.light_secondary),
-            SECONDARY_ICON("#8A000000", R.color.light_secondary),
-            DISABLED_TEXT("#42000000", R.color.light_disabled),
-            HINT_TEXT("#42000000", R.color.light_disabled),
-            DIVIDER("#1F000000", R.color.light_dividers);
+            ICON("#8A000000", R.color.md_light_primary_icon),
+            TEXT("#DE000000", R.color.md_light_primary_text),
+            SECONDARY_TEXT("#8A000000", R.color.md_light_secondary),
+            SECONDARY_ICON("#8A000000", R.color.md_light_secondary),
+            DISABLED_TEXT("#42000000", R.color.md_light_disabled),
+            HINT_TEXT("#42000000", R.color.md_light_disabled),
+            DIVIDER("#1F000000", R.color.md_light_dividers);
 
             String color;
             int resource;
@@ -51,13 +51,13 @@ public class Material {
          * for dark backgrounds
          */
         public enum Dark implements IColor {
-            ICON("#8AFFFFFF", R.color.dark_primary_icon),
-            TEXT("#DEFFFFFF", R.color.dark_primary_text),
-            SECONDARY_TEXT("#8AFFFFFF", R.color.dark_secondary),
-            SECONDARY_ICON("#8AFFFFFF", R.color.dark_secondary),
-            DISABLED_TEXT("#42FFFFFF", R.color.dark_disabled),
-            HINT_TEXT("#42FFFFFF", R.color.dark_disabled),
-            DIVIDER("#1FFFFFFF", R.color.dark_dividers);
+            ICON("#8AFFFFFF", R.color.md_dark_primary_icon),
+            TEXT("#DEFFFFFF", R.color.md_dark_primary_text),
+            SECONDARY_TEXT("#8AFFFFFF", R.color.md_dark_secondary),
+            SECONDARY_ICON("#8AFFFFFF", R.color.md_dark_secondary),
+            DISABLED_TEXT("#42FFFFFF", R.color.md_dark_disabled),
+            HINT_TEXT("#42FFFFFF", R.color.md_dark_disabled),
+            DIVIDER("#1FFFFFFF", R.color.md_dark_dividers);
 
             String color;
             int resource;
