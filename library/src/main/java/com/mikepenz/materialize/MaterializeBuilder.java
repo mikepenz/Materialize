@@ -8,22 +8,18 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.mikepenz.materialize.util.UIUtils;
+import com.mikepenz.materialize.view.IScrimInsetsLayout;
 import com.mikepenz.materialize.view.ScrimInsetsFrameLayout;
 
 /**
  * Created by mikepenz on 07.07.15.
  */
 public class MaterializeBuilder {
-
-    // some internal vars
-    // variable to check if a builder is only used once
-    protected boolean mUsed = false;
-
     // the activity to use
     protected Activity mActivity;
     protected ViewGroup mRootView;
-    protected ScrimInsetsFrameLayout mContentRoot;
-
+    protected ViewGroup mContentRoot;
+    protected IScrimInsetsLayout mScrimInsetsLayout;
 
     /**
      * default constructor
@@ -242,20 +238,56 @@ public class MaterializeBuilder {
         return this;
     }
 
+    // a viewGroup which contains the ScrimInsetsFrameLayout as child
+    protected ViewGroup mContainer = null;
+
+    /**
+     * set a container view here if you want the ScrimInsetsFrameLayout to be hosted inside another viewGroup
+     *
+     * @param container
+     * @return
+     */
+    public MaterializeBuilder withContainer(ViewGroup container) {
+        this.mContainer = container;
+        return this;
+    }
+
+    // the layoutParams for the container
+    protected ViewGroup.LayoutParams mContainerLayoutParams = null;
+
+    /**
+     * set the layout params for the container which will host the ScrimInsetsFrameLayout
+     *
+     * @param layoutParams
+     * @return
+     */
+    public MaterializeBuilder withContainerLayoutParams(ViewGroup.LayoutParams layoutParams) {
+        this.mContainerLayoutParams = layoutParams;
+        return this;
+    }
+
+    /**
+     * set the layout which will host the ScrimInsetsFrameLayout and its layoutParams
+     *
+     * @param container
+     * @param layoutParams
+     * @return
+     */
+    public MaterializeBuilder withContainer(ViewGroup container, ViewGroup.LayoutParams layoutParams) {
+        this.mContainer = container;
+        this.mContainerLayoutParams = layoutParams;
+        return this;
+    }
+
 
     public Materialize build() {
-        if (mUsed) {
-            throw new RuntimeException("you must not reuse a DrawerBuilder builder");
-        }
+        //we need an activity for this
         if (mActivity == null) {
             throw new RuntimeException("please pass an activity");
         }
 
-        //set that this builder was used. now you have to create a new one
-        mUsed = true;
-
         // if the user has not set a drawerLayout use the default one :D
-        mContentRoot = (ScrimInsetsFrameLayout) mActivity.getLayoutInflater().inflate(R.layout.materialize, mRootView, false);
+        mScrimInsetsLayout = (ScrimInsetsFrameLayout) mActivity.getLayoutInflater().inflate(R.layout.materialize, mRootView, false);
 
         //check if the activity was initialized correctly
         if (mRootView == null || mRootView.getChildCount() == 0) {
@@ -263,8 +295,9 @@ public class MaterializeBuilder {
         }
 
         //get the content view
-        View contentView = mRootView.getChildAt(0);
-        boolean alreadyInflated = contentView instanceof ScrimInsetsFrameLayout;
+        View originalContentView = mRootView.getChildAt(0);
+
+        boolean alreadyInflated = originalContentView.getId() == R.id.materialize_root;
 
         // define the statusBarColor
         if (mStatusBarColor == 0 && mStatusBarColorRes != -1) {
@@ -274,9 +307,9 @@ public class MaterializeBuilder {
         }
 
         //handling statusBar / navigationBar tinting
-        mContentRoot.setInsetForeground(mStatusBarColor);
-        mContentRoot.setTintStatusBar(mTintStatusBar);
-        mContentRoot.setTintNavigationBar(mTintNavigationBar);
+        mScrimInsetsLayout.setInsetForeground(mStatusBarColor);
+        mScrimInsetsLayout.setTintStatusBar(mTintStatusBar);
+        mScrimInsetsLayout.setTintNavigationBar(mTintNavigationBar);
 
         //do some magic specific to the statusBar
         if (!alreadyInflated && mTranslucentStatusBar) {
@@ -294,7 +327,7 @@ public class MaterializeBuilder {
                     mActivity.getWindow().setStatusBarColor(Color.TRANSPARENT);
                 }
             }
-            mContentRoot.setPadding(0, UIUtils.getStatusBarHeight(mActivity), 0, 0);
+            mScrimInsetsLayout.getView().setPadding(0, UIUtils.getStatusBarHeight(mActivity), 0, 0);
         }
 
         //do some magic specific to the navigationBar
@@ -318,7 +351,7 @@ public class MaterializeBuilder {
         //only add the new layout if it wasn't done before
         if (!alreadyInflated) {
             // remove the contentView
-            mRootView.removeView(contentView);
+            mRootView.removeView(originalContentView);
         } else {
             //if it was already inflated we have to clean up again
             mRootView.removeAllViews();
@@ -336,14 +369,35 @@ public class MaterializeBuilder {
         }
 
         //add the contentView to the drawer content frameLayout
-        mContentRoot.addView(contentView, layoutParamsContentView);
+        mScrimInsetsLayout.getView().addView(originalContentView, layoutParamsContentView);
 
+        //if we have a mContainer we use this one
+        mContentRoot = mScrimInsetsLayout.getView();
+        if (mContainer != null) {
+            mContentRoot = mContainer;
+            mContentRoot.addView(mScrimInsetsLayout.getView(), new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+            ));
+        }
+
+        //set the id so we can check if it was already inflated
+        mContentRoot.setId(R.id.materialize_root);
+
+        //make sure we have the correct layoutParams
+        if (mContainerLayoutParams == null) {
+            mContainerLayoutParams = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+            );
+        }
         //add the drawerLayout to the root
-        mRootView.addView(mContentRoot, new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-        ));
+        mRootView.addView(mContentRoot, mContainerLayoutParams);
 
+        //set activity to null as we do not need it anymore
+        this.mActivity = null;
+
+        //create a Materialize object with the builder
         return new Materialize(this);
     }
 }

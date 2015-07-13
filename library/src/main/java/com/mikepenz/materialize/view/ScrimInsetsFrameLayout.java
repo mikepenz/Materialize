@@ -24,6 +24,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.mikepenz.materialize.R;
@@ -33,7 +34,7 @@ import com.mikepenz.materialize.R;
  * A layout that draws something in the insets passed to {@link #fitSystemWindows(Rect)}, i.e. the area above UI chrome
  * (status and navigation bars, overlay action bars).
  */
-public class ScrimInsetsFrameLayout extends FrameLayout {
+public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsLayout {
     private Drawable mInsetForeground;
 
     private Rect mInsets;
@@ -135,30 +136,42 @@ public class ScrimInsetsFrameLayout extends FrameLayout {
         }
     }
 
+    @Override
+    public ViewGroup getView() {
+        return this;
+    }
+
+    @Override
     public Drawable getInsetForeground() {
         return mInsetForeground;
     }
 
+    @Override
     public void setInsetForeground(Drawable mInsetForeground) {
         this.mInsetForeground = mInsetForeground;
     }
 
+    @Override
     public void setInsetForeground(int mInsetForegroundColor) {
         this.mInsetForeground = new ColorDrawable(mInsetForegroundColor);
     }
 
+    @Override
     public boolean isTintStatusBar() {
         return mTintStatusBar;
     }
 
+    @Override
     public void setTintStatusBar(boolean mTintStatusBar) {
         this.mTintStatusBar = mTintStatusBar;
     }
 
+    @Override
     public boolean isTintNavigationBar() {
         return mTintNavigationBar;
     }
 
+    @Override
     public void setTintNavigationBar(boolean mTintNavigationBar) {
         this.mTintNavigationBar = mTintNavigationBar;
     }
@@ -169,11 +182,14 @@ public class ScrimInsetsFrameLayout extends FrameLayout {
      * UI chrome insets (e.g. a Google Map or a ListView). When using with ListView or GridView, remember to set
      * clipToPadding to false.
      */
+    @Override
     public void setOnInsetsCallback(OnInsetsCallback onInsetsCallback) {
         mOnInsetsCallback = onInsetsCallback;
     }
 
-    public static interface OnInsetsCallback {
-        public void onInsetsChanged(Rect insets);
+    @Override
+    public OnInsetsCallback getOnInsetsCallback() {
+        return mOnInsetsCallback;
     }
+
 }

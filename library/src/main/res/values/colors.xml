@@ -6,25 +6,17 @@
     <color name="colorPrimaryLight">#BBDEFB</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="window_background">#F9F9F9</color>
-
     <!-- Material DEFAULT colors -->
     <!-- chained the primary, primaryDark, primaryLight, accent colors for greater compatibility -->
     <color name="primary">@color/colorPrimary</color>
     <color name="primary_dark">@color/colorPrimaryDark</color>
     <color name="primary_light">@color/colorPrimaryLight</color>
     <color name="accent">@color/colorAccent</color>
+
+    <!-- Material DEFAULT colors -->
+    <!-- chained the primary, primaryDark, primaryLight, accent colors for greater compatibility -->
     <color name="materialize_primary">@color/primary</color>
     <color name="materialize_primary_dark">@color/primary_dark</color>
     <color name="materialize_primary_light">@color/primary_light</color>
     <color name="materialize_accent">@color/accent</color>
-
-    <!-- AboutLibraries colors
-    <color name="theme_window_background">#303030</color>
-    <color name="about_libraries_card">#666666</color>
-    <color name="about_libraries_title_openSource">#ffffffff</color>
-    <color name="about_libraries_text_openSource">#DEDEDE</color>
-    <color name="about_libraries_dividerDark_openSource">#303030</color>
-    <color name="about_libraries_dividerLight_openSource">#303030</color>
-    -->
 </resources>
