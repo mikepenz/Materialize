@@ -22,7 +22,7 @@ To follow
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
-compile('com.mikepenz:materialize:0.0.3-SNAPSHOT@aar') {
+compile('com.mikepenz:materialize:0.0.4-SNAPSHOT@aar') {
 	transitive = true
 }
 ```

@@ -13,8 +13,8 @@ android {
         applicationId "com.mikepenz.materialize.app"
         minSdkVersion 10
         targetSdkVersion 22
-        versionCode 3
-        versionName '0.0.3-SNAPSHOT'
+        versionCode 4
+        versionName '0.0.4-SNAPSHOT'
 
         applicationVariants.all { variant ->
             variant.outputs.each { output ->
