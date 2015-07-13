@@ -51,6 +51,35 @@ public class MaterializeBuilder {
         return this;
     }
 
+    /**
+     * Pass the rootView of the MaterializeBuilder which will be used to inflate the views in
+     *
+     * @param rootView
+     * @return
+     */
+    public MaterializeBuilder withRootView(ViewGroup rootView) {
+        this.mRootView = rootView;
+
+        //disable the translucent statusBar we don't need it
+        withTranslucentStatusBar(false);
+
+        return this;
+    }
+
+    /**
+     * Pass the rootView as resource of the DrawerBuilder which will be used to inflate the views in
+     *
+     * @param rootViewRes
+     * @return
+     */
+    public MaterializeBuilder withRootView(int rootViewRes) {
+        if (mActivity == null) {
+            throw new RuntimeException("please pass an activity first to use this call");
+        }
+
+        return withRootView((ViewGroup) mActivity.findViewById(rootViewRes));
+    }
+
     //the statusBar color
     protected int mStatusBarColor = 0;
     protected int mStatusBarColorRes = -1;
@@ -90,18 +119,6 @@ public class MaterializeBuilder {
      */
     public MaterializeBuilder withTranslucentActionBarCompatibility(boolean translucentActionBarCompatibility) {
         this.mTranslucentActionBarCompatibility = translucentActionBarCompatibility;
-        return this;
-    }
-
-    /**
-     * Set this to true if you want your drawer to be displayed below the toolbar.
-     * Note this will add a margin above the drawer
-     *
-     * @param displayBelowToolbar
-     * @return
-     */
-    public MaterializeBuilder withDisplayBelowToolbar(boolean displayBelowToolbar) {
-        this.mTranslucentActionBarCompatibility = displayBelowToolbar;
         return this;
     }
 
