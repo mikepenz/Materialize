@@ -1,10 +1,36 @@
 #Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)
 [![Join the chat at https://gitter.im/mikepenz/materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-##THIS IS STILL WORK IN PROGRESS! USE IT WITH CAUTION AT THE MOMENT
+**Materialize** comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior...
 
-A easy helper library for Android to manage your applications StatusBarShadow, FullScreen behavior and much more over API Levels down to 10
+#What's in?
+* Never worry about API specific differences again (**minSdk 10**)
 
+* MaterializeBuilder -> Materialize
+ * Let the library handle if you want
+  * your activity as fullscreen
+  * your activity with a transparent navigationBar
+ * Let it handle the statusBarBackground color
+  * It uses a ScrimInsetsFrameLayout
+
+* Complete Material Color palette
+ * As resource
+ * As class
+
+* A feature complete BaseTheme
+ * AppCompat base
+ * Defines all colors
+ * Comes with many variations
+ * All compatible down to **minSdk 10**
+
+* A huge collection of helper methods via the UIUtils, safe down to API 10
+ * getThemeColor
+ * setBackground
+ * getThemeColorFromAttrOrRes
+ * getActionBarHeight
+
+* KeyboardUtil
+ * Handle the Layout (adjust_resize) if you use the FULL_SCREEN flag
 
 #Preview
 ##Demo
@@ -22,13 +48,33 @@ To follow
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
-compile('com.mikepenz:materialize:0.0.4-SNAPSHOT@aar') {
+compile('com.mikepenz:materialize:0.1.0@aar') {
 	transitive = true
 }
 ```
 
 ##How to use
+###MaterializeBuilder
 
+```java
+    //minimal configuration
+
+    new MaterializeBuilder().withActivity(this).build();
+```
+
+```java
+    //fullscreen activity with small modifications
+
+    new MaterializeBuilder()
+        .withActivity(this)
+        .withFullscreen(true)
+        .withTranslucentStatusBar(true)
+        .withTintedStatusBar(true).build();
+```
+
+###Materialize Theme
+
+To use one of the provided themes just use a `MaterialTheme`, `MaterialTheme.*` theme as parent
 
 #Developed By
 
