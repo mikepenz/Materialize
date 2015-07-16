@@ -1,7 +1,5 @@
-#Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)
+#Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)[![Join the chat at https://gitter.im/mikepenz/Materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/Materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-[![Join the chat at https://gitter.im/mikepenz/Materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/Materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Join the chat at https://gitter.im/mikepenz/materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 **Materialize** comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior...
 
