@@ -1,5 +1,5 @@
-#Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)
-[![Join the chat at https://gitter.im/mikepenz/materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+#Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)[![Join the chat at https://gitter.im/mikepenz/Materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/Materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 **Materialize** comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior...
 
@@ -48,7 +48,7 @@ To follow
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
-compile('com.mikepenz:materialize:0.1.0@aar') {
+compile('com.mikepenz:materialize:0.1.1@aar') {
 	transitive = true
 }
 ```
