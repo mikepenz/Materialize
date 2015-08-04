@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="define_materialdrawer">year;owner</string>
-    <string name="library_materialdrawer_author">Mike Penz</string>
-    <string name="library_materialdrawer_authorWebsite">http://mikepenz.com/</string>
-    <string name="library_materialdrawer_libraryName">Materialize</string>
-    <string name="library_materialdrawer_libraryDescription">
+    <string name="define_materialize">year;owner</string>
+    <string name="library_materialize_author">Mike Penz</string>
+    <string name="library_materialize_authorWebsite">http://mikepenz.com/</string>
+    <string name="library_materialize_libraryName">Materialize</string>
+    <string name="library_materialize_libraryDescription">
         <![CDATA[
         <b>Materialize</b> comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior&#8230;
         ]]>
     </string>
-    <string name="library_materialdrawer_libraryVersion">0.1.2</string>
-    <string name="library_materialdrawer_libraryWebsite">https://github.com/mikepenz/Materialize</string>
-    <string name="library_materialdrawer_licenseId">apache_2_0</string>
-    <string name="library_materialdrawer_isOpenSource">true</string>
-    <string name="library_materialdrawer_repositoryLink">https://github.com/mikepenz/Materialize</string>
+    <string name="library_materialize_libraryVersion">0.1.2</string>
+    <string name="library_materialize_libraryWebsite">https://github.com/mikepenz/Materialize</string>
+    <string name="library_materialize_licenseId">apache_2_0</string>
+    <string name="library_materialize_isOpenSource">true</string>
+    <string name="library_materialize_repositoryLink">https://github.com/mikepenz/Materialize</string>
     <!-- Custom variables section -->
-    <string name="library_materialdrawer_owner">Mike Penz</string>
-    <string name="library_materialdrawer_year">2015</string>
+    <string name="library_materialize_owner">Mike Penz</string>
+    <string name="library_materialize_year">2015</string>
 </resources>
