@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "com.mikepenz.materialize.app"
         minSdkVersion 10
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 13
         versionName '0.1.3'
 
