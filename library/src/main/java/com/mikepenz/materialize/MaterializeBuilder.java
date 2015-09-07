@@ -328,6 +328,9 @@ public class MaterializeBuilder {
         mScrimInsetsLayout.setTintStatusBar(mTintStatusBar);
         mScrimInsetsLayout.setTintNavigationBar(mTintNavigationBar);
 
+        //if we are fullscreen remove all insets
+        mScrimInsetsLayout.setSystemUIVisible(!mFullscreen);
+
         //do some magic specific to the statusBar
         if (!alreadyInflated && mTranslucentStatusBar) {
             if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {

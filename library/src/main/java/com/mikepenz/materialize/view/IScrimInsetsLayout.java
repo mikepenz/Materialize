@@ -23,6 +23,10 @@ public interface IScrimInsetsLayout {
 
     void setTintNavigationBar(boolean mTintNavigationBar);
 
+    boolean isSystemUIVisible();
+
+    void setSystemUIVisible(boolean systemUIVisible);
+
     void setOnInsetsCallback(OnInsetsCallback onInsetsCallback);
 
     OnInsetsCallback getOnInsetsCallback();
