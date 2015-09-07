@@ -43,6 +43,7 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
 
     private boolean mTintStatusBar = true;
     private boolean mTintNavigationBar = true;
+    private boolean mSystemUIVisible = true;
 
     public ScrimInsetsFrameLayout(Context context) {
         super(context);
@@ -91,6 +92,13 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
         if (mInsets != null && mInsetForeground != null) {
             int sc = canvas.save();
             canvas.translate(getScrollX(), getScrollY());
+
+            if (!mSystemUIVisible) {
+                mInsets.top = 0;
+                mInsets.right = 0;
+                mInsets.bottom = 0;
+                mInsets.left = 0;
+            }
 
             // Top
             if (mTintStatusBar) {
@@ -174,6 +182,14 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
     @Override
     public void setTintNavigationBar(boolean mTintNavigationBar) {
         this.mTintNavigationBar = mTintNavigationBar;
+    }
+
+    public boolean isSystemUIVisible() {
+        return mSystemUIVisible;
+    }
+
+    public void setSystemUIVisible(boolean systemUIVisible) {
+        this.mSystemUIVisible = systemUIVisible;
     }
 
     /**
