@@ -13,8 +13,8 @@ android {
         applicationId "com.mikepenz.materialize.app"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 27
-        versionName '0.2.7'
+        versionCode 28
+        versionName '0.2.8'
 
         applicationVariants.all { variant ->
             variant.outputs.each { output ->
@@ -51,11 +51,11 @@ android {
 dependencies {
     compile project(':library')
 
-    compile('com.mikepenz:materialdrawer:4.3.6@aar') {
+    compile('com.mikepenz:materialdrawer:4.4.6@aar') {
         transitive = true
         exclude group: 'com.mikepenz', module: 'materialize'
     }
-    compile('com.mikepenz:aboutlibraries:5.2.4@aar') {
+    compile('com.mikepenz:aboutlibraries:5.3.2@aar') {
         transitive = true
     }
 }
