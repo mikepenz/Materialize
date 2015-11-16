@@ -5,7 +5,7 @@
     https://www.google.com/design/spec/style/color.html#color-color-palette -->
 
     <!-- Items Light -->
-    <color name="md_light_background">#F9F9F9</color>
+    <color name="md_light_background">@color/md_grey_50</color>
     <color name="md_light_dividers">#1F000000</color>
     <color name="md_light_disabled">#42000000</color>
     <color name="md_light_secondary">#8A000000</color>
