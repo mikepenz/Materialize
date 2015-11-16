@@ -13,7 +13,7 @@
     <color name="md_light_primary_icon">#8A000000</color>
 
     <!-- Items Dark -->
-    <color name="md_dark_background">#303030</color>
+    <color name="md_dark_background">@color/md_grey_850</color>
     <color name="md_dark_dividers">#1FFFFFFF</color>
     <color name="md_dark_disabled">#42FFFFFF</color>
     <color name="md_dark_secondary">#8AFFFFFF</color>
@@ -298,6 +298,7 @@
     <color name="md_grey_600">#757575</color>
     <color name="md_grey_700">#616161</color>
     <color name="md_grey_800">#424242</color>
+    <color name="md_grey_850">#303030</color>
     <color name="md_grey_900">#212121</color>
 
     <!-- Blue Grey -->
