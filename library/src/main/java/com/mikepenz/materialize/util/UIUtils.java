@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -244,5 +245,19 @@ public class UIUtils {
             winParams.flags &= ~bits;
         }
         win.setAttributes(winParams);
+    }
+
+    /**
+     * helper to create a stateListDrawable for the icon
+     *
+     * @param icon
+     * @param selectedIcon
+     * @return
+     */
+    public static StateListDrawable getIconStateList(Drawable icon, Drawable selectedIcon) {
+        StateListDrawable iconStateListDrawable = new StateListDrawable();
+        iconStateListDrawable.addState(new int[]{android.R.attr.state_selected}, selectedIcon);
+        iconStateListDrawable.addState(new int[]{}, icon);
+        return iconStateListDrawable;
     }
 }

@@ -1,4 +1,4 @@
 <resources>
-    <!-- General vertical padding values -->
-    <dimen name="material_drawer_vertical_padding">24dp</dimen>
+    <!-- metrics / keylines -->
+    <dimen name="materialize_screen_edge">24dp</dimen>
 </resources>
