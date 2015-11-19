@@ -1,4 +1,40 @@
 <resources>
     <!-- Toolbar Padding -->
     <dimen name="tool_bar_top_padding">0dp</dimen>
+
+    <!-- Typography -->
+    <dimen name="materialize_typography_caption">12sp</dimen>
+    <dimen name="materialize_typography_body1">14sp</dimen>
+    <dimen name="materialize_typography_body2">14sp</dimen>
+    <dimen name="materialize_typography_subheading">16sp</dimen>
+    <dimen name="materialize_typography_title">20sp</dimen>
+    <dimen name="materialize_typography_headline">24sp</dimen>
+    <dimen name="materialize_typography_display1">34sp</dimen>
+
+    <!-- metrics / keylines -->
+    <dimen name="materialize_baseline_grid_small">4dp</dimen>
+    <dimen name="materialize_baseline_grid">8dp</dimen>
+    <dimen name="materialize_baseline_grid_x2">16dp</dimen>
+    <dimen name="materialize_baseline_grid_x3">24dp</dimen>
+    <dimen name="materialize_baseline_grid_x4">32dp</dimen>
+    <dimen name="materialize_baseline_grid_x5">40dp</dimen>
+    <dimen name="materialize_baseline_grid_x6">48dp</dimen>
+    <dimen name="materialize_baseline_grid_x7">56dp</dimen>
+    <dimen name="materialize_baseline_grid_x8">64dp</dimen>
+    <dimen name="materialize_baseline_grid_x9">72dp</dimen>
+    <dimen name="materialize_baseline_grid_x10">80dp</dimen>
+
+    <dimen name="materialize_screen_edge">16dp</dimen>
+
+    <dimen name="materialize_statusbar">24dp</dimen>
+    <dimen name="materialize_toolbar">56dp</dimen>
+    <dimen name="materialize_subtitle">48dp</dimen>
+    <dimen name="materialize_listitem">72dp</dimen>
+    <dimen name="materialize_spacing">8dp</dimen>
+    <dimen name="materialize_content_margin_with_icon">72dp</dimen>
+    <dimen name="materialize_right_side_icon_margin">32dp</dimen>
+
+    <dimen name="materialize_avatar">40dp</dimen>
+    <dimen name="materialize_icon">24dp</dimen>
+    <dimen name="materialize_touch_target">48dp</dimen>
 </resources>
