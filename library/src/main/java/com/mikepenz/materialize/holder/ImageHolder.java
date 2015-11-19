@@ -48,18 +48,33 @@ public class ImageHolder {
         return mUri;
     }
 
+    public void setUri(Uri mUri) {
+        this.mUri = mUri;
+    }
+
     public Drawable getIcon() {
         return mIcon;
+    }
+
+    public void setIcon(Drawable mIcon) {
+        this.mIcon = mIcon;
     }
 
     public Bitmap getBitmap() {
         return mBitmap;
     }
 
+    public void setBitmap(Bitmap mBitmap) {
+        this.mBitmap = mBitmap;
+    }
+
     public int getIconRes() {
         return mIconRes;
     }
 
+    public void setIconRes(int mIconRes) {
+        this.mIconRes = mIconRes;
+    }
 
     /**
      * sets an existing image to the imageView

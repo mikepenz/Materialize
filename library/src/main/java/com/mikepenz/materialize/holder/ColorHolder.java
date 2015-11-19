@@ -24,6 +24,22 @@ public class ColorHolder {
 
     }
 
+    public int getColorInt() {
+        return mColorInt;
+    }
+
+    public void setColorInt(int mColorInt) {
+        this.mColorInt = mColorInt;
+    }
+
+    public int getColorRes() {
+        return mColorRes;
+    }
+
+    public void setColorRes(int mColorRes) {
+        this.mColorRes = mColorRes;
+    }
+
     public static ColorHolder fromColorRes(@ColorRes int colorRes) {
         ColorHolder colorHolder = new ColorHolder();
         colorHolder.mColorRes = colorRes;
@@ -34,14 +50,6 @@ public class ColorHolder {
         ColorHolder colorHolder = new ColorHolder();
         colorHolder.mColorInt = colorInt;
         return colorHolder;
-    }
-
-    public int getColorInt() {
-        return mColorInt;
-    }
-
-    public int getColorRes() {
-        return mColorRes;
     }
 
     /**

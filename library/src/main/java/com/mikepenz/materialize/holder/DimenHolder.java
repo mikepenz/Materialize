@@ -17,6 +17,30 @@ public class DimenHolder {
 
     }
 
+    public int getPixel() {
+        return mPixel;
+    }
+
+    public void setPixel(int mPixel) {
+        this.mPixel = mPixel;
+    }
+
+    public int getDp() {
+        return mDp;
+    }
+
+    public void setDp(int mDp) {
+        this.mDp = mDp;
+    }
+
+    public int getResource() {
+        return mResource;
+    }
+
+    public void setResource(int mResource) {
+        this.mResource = mResource;
+    }
+
     public static DimenHolder fromPixel(int pixel) {
         DimenHolder dimenHolder = new DimenHolder();
         dimenHolder.mPixel = pixel;
@@ -33,18 +57,6 @@ public class DimenHolder {
         DimenHolder dimenHolder = new DimenHolder();
         dimenHolder.mResource = resource;
         return dimenHolder;
-    }
-
-    public int getPixel() {
-        return mPixel;
-    }
-
-    public int getDp() {
-        return mDp;
-    }
-
-    public int getResource() {
-        return mResource;
     }
 
     public int asPixel(Context ctx) {

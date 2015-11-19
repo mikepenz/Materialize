@@ -24,8 +24,16 @@ public class StringHolder {
         return mText;
     }
 
+    public void setText(String mText) {
+        this.mText = mText;
+    }
+
     public int getTextRes() {
         return mTextRes;
+    }
+
+    public void setTextRes(int mTextRes) {
+        this.mTextRes = mTextRes;
     }
 
     public void applyTo(TextView textView) {
