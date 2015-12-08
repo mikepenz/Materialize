@@ -78,8 +78,9 @@ To use one of the provided themes just use a `MaterialTheme`, `MaterialTheme.*` 
 
 #Developed By
 
-* Mike Penz - http://mikepenz.com - <mikepenz@gmail.com>
-
+* Mike Penz 
+ * [mikepenz.com](http://mikepenz.com) - <mikepenz@gmail.com>
+ * [paypal.me/mikepenz](http://paypal.me/mikepenz)
 
 #License
 
