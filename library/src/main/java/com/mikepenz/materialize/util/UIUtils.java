@@ -9,6 +9,9 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -29,7 +32,7 @@ public class UIUtils {
      * @param attr
      * @return
      */
-    public static int getThemeColor(Context ctx, int attr) {
+    public static int getThemeColor(Context ctx, @AttrRes int attr) {
         TypedValue tv = new TypedValue();
         if (ctx.getTheme().resolveAttribute(attr, tv, true)) {
             return tv.data;
@@ -45,7 +48,7 @@ public class UIUtils {
      * @param res
      * @return
      */
-    public static int getThemeColorFromAttrOrRes(Context ctx, int attr, int res) {
+    public static int getThemeColorFromAttrOrRes(Context ctx, @AttrRes int attr, @ColorRes int res) {
         int color = getThemeColor(ctx, attr);
         if (color == 0) {
             color = ctx.getResources().getColor(res);
@@ -74,7 +77,7 @@ public class UIUtils {
      * @param v
      * @param drawableRes
      */
-    public static void setBackground(View v, int drawableRes) {
+    public static void setBackground(View v, @DrawableRes int drawableRes) {
         setBackground(v, getCompatDrawable(v.getContext(), drawableRes));
     }
 
@@ -85,7 +88,7 @@ public class UIUtils {
      * @param drawableRes
      * @return
      */
-    public static Drawable getCompatDrawable(Context c, int drawableRes) {
+    public static Drawable getCompatDrawable(Context c, @DrawableRes int drawableRes) {
         Drawable d = null;
         try {
             if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -105,7 +108,7 @@ public class UIUtils {
      * @param attr    is the attribute dimension we want to know the size from
      * @return the size in pixels of an attribute dimension
      */
-    public static int getThemeAttributeDimensionSize(Context context, int attr) {
+    public static int getThemeAttributeDimensionSize(Context context, @AttrRes int attr) {
         TypedArray a = null;
         try {
             a = context.getTheme().obtainStyledAttributes(new int[]{attr});
