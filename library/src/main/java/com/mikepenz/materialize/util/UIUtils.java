@@ -6,9 +6,14 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -29,7 +34,7 @@ public class UIUtils {
      * @param attr
      * @return
      */
-    public static int getThemeColor(Context ctx, int attr) {
+    public static int getThemeColor(Context ctx, @AttrRes int attr) {
         TypedValue tv = new TypedValue();
         if (ctx.getTheme().resolveAttribute(attr, tv, true)) {
             return tv.data;
@@ -45,10 +50,10 @@ public class UIUtils {
      * @param res
      * @return
      */
-    public static int getThemeColorFromAttrOrRes(Context ctx, int attr, int res) {
+    public static int getThemeColorFromAttrOrRes(Context ctx, @AttrRes int attr, @ColorRes int res) {
         int color = getThemeColor(ctx, attr);
         if (color == 0) {
-            color = ctx.getResources().getColor(res);
+            color = ContextCompat.getColor(ctx, res);
         }
         return color;
     }
@@ -74,7 +79,7 @@ public class UIUtils {
      * @param v
      * @param drawableRes
      */
-    public static void setBackground(View v, int drawableRes) {
+    public static void setBackground(View v, @DrawableRes int drawableRes) {
         setBackground(v, getCompatDrawable(v.getContext(), drawableRes));
     }
 
@@ -85,7 +90,7 @@ public class UIUtils {
      * @param drawableRes
      * @return
      */
-    public static Drawable getCompatDrawable(Context c, int drawableRes) {
+    public static Drawable getCompatDrawable(Context c, @DrawableRes int drawableRes) {
         Drawable d = null;
         try {
             if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
@@ -105,7 +110,7 @@ public class UIUtils {
      * @param attr    is the attribute dimension we want to know the size from
      * @return the size in pixels of an attribute dimension
      */
-    public static int getThemeAttributeDimensionSize(Context context, int attr) {
+    public static int getThemeAttributeDimensionSize(Context context, @AttrRes int attr) {
         TypedArray a = null;
         try {
             a = context.getTheme().obtainStyledAttributes(new int[]{attr});
@@ -259,5 +264,78 @@ public class UIUtils {
         iconStateListDrawable.addState(new int[]{android.R.attr.state_selected}, selectedIcon);
         iconStateListDrawable.addState(new int[]{}, icon);
         return iconStateListDrawable;
+    }
+
+
+    /**
+     * helper to get the system default selectable background inclusive an active state
+     *
+     * @param ctx            the context
+     * @param selected_color the selected color
+     * @param animate        true if you want to fade over the states (only animates if API newer than Build.VERSION_CODES.HONEYCOMB)
+     * @return the StateListDrawable
+     */
+    public static StateListDrawable getSelectableBackground(Context ctx, int selected_color, boolean animate) {
+        StateListDrawable states = new StateListDrawable();
+
+        ColorDrawable clrActive = new ColorDrawable(selected_color);
+        states.addState(new int[]{android.R.attr.state_selected}, clrActive);
+
+        states.addState(new int[]{}, ContextCompat.getDrawable(ctx, getSelectableBackground(ctx)));
+        //if possible we enable animating across states
+        if (animate && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            int duration = ctx.getResources().getInteger(android.R.integer.config_shortAnimTime);
+            states.setEnterFadeDuration(duration);
+            states.setExitFadeDuration(duration);
+        }
+        return states;
+    }
+
+    /**
+     * helper to get the system default selectable background inclusive an active and pressed state
+     *
+     * @param ctx            the context
+     * @param selected_color the selected color
+     * @param pressed_alpha  0-255
+     * @param animate        true if you want to fade over the states (only animates if API newer than Build.VERSION_CODES.HONEYCOMB)
+     * @return the StateListDrawable
+     */
+    public static StateListDrawable getSelectablePressedBackground(Context ctx, int selected_color, int pressed_alpha, boolean animate) {
+        StateListDrawable states = getSelectableBackground(ctx, selected_color, animate);
+        ColorDrawable clrPressed = new ColorDrawable(adjustAlpha(selected_color, pressed_alpha));
+        states.addState(new int[]{android.R.attr.state_pressed}, clrPressed);
+        return states;
+    }
+
+    /**
+     * adjusts the alpha of a color
+     *
+     * @param color the color
+     * @param alpha the alpha value we want to set 0-255
+     * @return the adjusted color
+     */
+    public static int adjustAlpha(int color, int alpha) {
+        return (alpha << 24) | (color & 0x00ffffff);
+    }
+
+    /**
+     * helper to get the system default selectable background
+     *
+     * @param ctx
+     * @return
+     */
+    public static int getSelectableBackground(Context ctx) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            // If we're running on Honeycomb or newer, then we can use the Theme's
+            // selectableItemBackground to ensure that the View has a pressed state
+            TypedValue outValue = new TypedValue();
+            //it is important here to not use the android.R because this wouldn't add the latest drawable
+            ctx.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
+            return outValue.resourceId;
+        } else {
+            TypedValue outValue = new TypedValue();
+            ctx.getTheme().resolveAttribute(android.R.attr.itemBackground, outValue, true);
+            return outValue.resourceId;
+        }
     }
 }
