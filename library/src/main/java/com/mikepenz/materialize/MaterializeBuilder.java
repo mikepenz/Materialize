@@ -3,6 +3,7 @@ package com.mikepenz.materialize;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -339,7 +340,7 @@ public class MaterializeBuilder {
 
         // define the statusBarColor
         if (mStatusBarColor == 0 && mStatusBarColorRes != -1) {
-            mStatusBarColor = mActivity.getResources().getColor(mStatusBarColorRes);
+            mStatusBarColor = ContextCompat.getColor(mActivity, mStatusBarColorRes);
         } else if (mStatusBarColor == 0) {
             mStatusBarColor = UIUtils.getThemeColorFromAttrOrRes(mActivity, R.attr.colorPrimaryDark, R.color.materialize_primary_dark);
         }
