@@ -1,7 +1,7 @@
 package com.mikepenz.materialize.view;
 
-import android.graphics.Rect;
+import android.support.v4.view.WindowInsetsCompat;
 
 public interface OnInsetsCallback {
-    void onInsetsChanged(Rect insets);
+    void onInsetsChanged(WindowInsetsCompat insets);
 }

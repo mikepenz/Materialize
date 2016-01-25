@@ -23,7 +23,9 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.WindowInsetsCompat;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -36,9 +38,9 @@ import com.mikepenz.materialize.R;
  */
 public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsLayout {
     private Drawable mInsetForeground;
-
     private Rect mInsets;
     private Rect mTempRect = new Rect();
+
     private OnInsetsCallback mOnInsetsCallback;
 
     private boolean mTintStatusBar = true;
@@ -70,17 +72,28 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
         a.recycle();
 
         setWillNotDraw(true);
-    }
+        setWillNotDraw(true); // No need to draw until the insets are adjusted
 
-    @Override
-    protected boolean fitSystemWindows(Rect insets) {
-        mInsets = new Rect(insets);
-        setWillNotDraw(mInsetForeground == null);
-        ViewCompat.postInvalidateOnAnimation(this);
-        if (mOnInsetsCallback != null) {
-            mOnInsetsCallback.onInsetsChanged(insets);
-        }
-        return true; // consume insets
+        ViewCompat.setOnApplyWindowInsetsListener(this,
+                new android.support.v4.view.OnApplyWindowInsetsListener() {
+                    @Override
+                    public WindowInsetsCompat onApplyWindowInsets(View v,
+                                                                  WindowInsetsCompat insets) {
+                        if (null == mInsets) {
+                            mInsets = new Rect();
+                        }
+                        mInsets.set(insets.getSystemWindowInsetLeft(),
+                                insets.getSystemWindowInsetTop(),
+                                insets.getSystemWindowInsetRight(),
+                                insets.getSystemWindowInsetBottom());
+                        setWillNotDraw(mInsets.isEmpty() || mInsetForeground == null);
+                        ViewCompat.postInvalidateOnAnimation(ScrimInsetsFrameLayout.this);
+                        if (mOnInsetsCallback != null) {
+                            mOnInsetsCallback.onInsetsChanged(insets);
+                        }
+                        return insets.consumeSystemWindowInsets();
+                    }
+                });
     }
 
     @Override
