@@ -1,19 +1,3 @@
-/*
- * Copyright 2014 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.mikepenz.materialize.view;
 
 import android.content.Context;
@@ -22,21 +6,22 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.WindowInsetsCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import com.mikepenz.materialize.R;
 
 
 /**
- * A layout that draws something in the insets passed to {@link #fitSystemWindows(Rect)}, i.e. the area above UI chrome
- * (status and navigation bars, overlay action bars).
+ * Created by mikepenz on 25.01.16.
  */
-public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsLayout {
+public class ScrimInsetsRelativeLayout extends RelativeLayout implements IScrimInsetsLayout {
+
     private Drawable mInsetForeground;
     private Rect mInsets;
     private Rect mTempRect = new Rect();
@@ -47,33 +32,29 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
     private boolean mTintNavigationBar = true;
     private boolean mSystemUIVisible = true;
 
-    public ScrimInsetsFrameLayout(Context context) {
-        super(context);
-        init(context, null, 0);
+    public ScrimInsetsRelativeLayout(Context context) {
+        this(context, null);
     }
 
-    public ScrimInsetsFrameLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+    public ScrimInsetsRelativeLayout(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public ScrimInsetsFrameLayout(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        init(context, attrs, defStyle);
-    }
+    public ScrimInsetsRelativeLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
 
-    private void init(Context context, AttributeSet attrs, int defStyle) {
         final TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.ScrimInsetsView, defStyle,
+                R.styleable.ScrimInsetsRelativeLayout, defStyleAttr,
                 R.style.Widget_Materialize_ScrimInsetsRelativeLayout);
-        mInsetForeground = a.getDrawable(R.styleable.ScrimInsetsView_siv_insetForeground);
+        mInsetForeground = a.getDrawable(R.styleable.ScrimInsetsRelativeLayout_sirl_insetForeground);
         a.recycle();
         setWillNotDraw(true); // No need to draw until the insets are adjusted
 
         ViewCompat.setOnApplyWindowInsetsListener(this,
                 new android.support.v4.view.OnApplyWindowInsetsListener() {
                     @Override
-                    public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
+                    public WindowInsetsCompat onApplyWindowInsets(View v,
+                                                                  WindowInsetsCompat insets) {
                         if (null == mInsets) {
                             mInsets = new Rect();
                         }
@@ -82,7 +63,7 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
                                 insets.getSystemWindowInsetRight(),
                                 insets.getSystemWindowInsetBottom());
                         setWillNotDraw(mInsetForeground == null);
-                        ViewCompat.postInvalidateOnAnimation(ScrimInsetsFrameLayout.this);
+                        ViewCompat.postInvalidateOnAnimation(ScrimInsetsRelativeLayout.this);
                         if (mOnInsetsCallback != null) {
                             mOnInsetsCallback.onInsetsChanged(insets);
                         }
@@ -100,7 +81,7 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
     }
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(@NonNull Canvas canvas) {
         super.draw(canvas);
 
         int width = getWidth();
@@ -129,7 +110,6 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
                 mInsetForeground.setBounds(mTempRect);
                 mInsetForeground.draw(canvas);
             }
-
             // Left
             mTempRect.set(0, mInsets.top, mInsets.left, height - mInsets.bottom);
             mInsetForeground.setBounds(mTempRect);
@@ -223,5 +203,4 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
     public OnInsetsCallback getOnInsetsCallback() {
         return mOnInsetsCallback;
     }
-
 }

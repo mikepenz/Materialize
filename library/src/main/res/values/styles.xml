@@ -114,4 +114,8 @@
         <item name="spinBars">false</item>
         <item name="color">@android:color/black</item>
     </style>
+
+    <style name="Widget.Materialize.ScrimInsetsRelativeLayout" parent="">
+        <item name="sirl_insetForeground">#4000</item>
+    </style>
 </resources>
