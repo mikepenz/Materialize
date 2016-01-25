@@ -64,21 +64,16 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
         final TypedArray a = context.obtainStyledAttributes(attrs,
-                R.styleable.ScrimInsetsView, defStyle, 0);
-        if (a == null) {
-            return;
-        }
+                R.styleable.ScrimInsetsView, defStyle,
+                R.style.Widget_Materialize_ScrimInsetsRelativeLayout);
         mInsetForeground = a.getDrawable(R.styleable.ScrimInsetsView_siv_insetForeground);
         a.recycle();
-
-        setWillNotDraw(true);
         setWillNotDraw(true); // No need to draw until the insets are adjusted
 
         ViewCompat.setOnApplyWindowInsetsListener(this,
                 new android.support.v4.view.OnApplyWindowInsetsListener() {
                     @Override
-                    public WindowInsetsCompat onApplyWindowInsets(View v,
-                                                                  WindowInsetsCompat insets) {
+                    public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat insets) {
                         if (null == mInsets) {
                             mInsets = new Rect();
                         }
@@ -86,7 +81,7 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
                                 insets.getSystemWindowInsetTop(),
                                 insets.getSystemWindowInsetRight(),
                                 insets.getSystemWindowInsetBottom());
-                        setWillNotDraw(mInsets.isEmpty() || mInsetForeground == null);
+                        setWillNotDraw(mInsetForeground == null);
                         ViewCompat.postInvalidateOnAnimation(ScrimInsetsFrameLayout.this);
                         if (mOnInsetsCallback != null) {
                             mOnInsetsCallback.onInsetsChanged(insets);
@@ -94,6 +89,14 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
                         return insets.consumeSystemWindowInsets();
                     }
                 });
+    }
+
+    @Override
+    protected boolean fitSystemWindows(Rect insets) {
+        mInsets = new Rect(insets);
+        setWillNotDraw(mInsetForeground == null);
+        ViewCompat.postInvalidateOnAnimation(this);
+        return super.fitSystemWindows(insets);
     }
 
     @Override

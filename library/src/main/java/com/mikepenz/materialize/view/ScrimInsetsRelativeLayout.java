@@ -62,7 +62,7 @@ public class ScrimInsetsRelativeLayout extends RelativeLayout implements IScrimI
                                 insets.getSystemWindowInsetTop(),
                                 insets.getSystemWindowInsetRight(),
                                 insets.getSystemWindowInsetBottom());
-                        setWillNotDraw(mInsets.isEmpty() || mInsetForeground == null);
+                        setWillNotDraw(mInsetForeground == null);
                         ViewCompat.postInvalidateOnAnimation(ScrimInsetsRelativeLayout.this);
                         if (mOnInsetsCallback != null) {
                             mOnInsetsCallback.onInsetsChanged(insets);
@@ -70,6 +70,14 @@ public class ScrimInsetsRelativeLayout extends RelativeLayout implements IScrimI
                         return insets.consumeSystemWindowInsets();
                     }
                 });
+    }
+
+    @Override
+    protected boolean fitSystemWindows(Rect insets) {
+        mInsets = new Rect(insets);
+        setWillNotDraw(mInsetForeground == null);
+        ViewCompat.postInvalidateOnAnimation(this);
+        return super.fitSystemWindows(insets);
     }
 
     @Override
