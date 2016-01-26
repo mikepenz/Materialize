@@ -73,14 +73,6 @@ public class ScrimInsetsRelativeLayout extends RelativeLayout implements IScrimI
     }
 
     @Override
-    protected boolean fitSystemWindows(Rect insets) {
-        mInsets = new Rect(insets);
-        setWillNotDraw(mInsetForeground == null);
-        ViewCompat.postInvalidateOnAnimation(this);
-        return super.fitSystemWindows(insets);
-    }
-
-    @Override
     public void draw(@NonNull Canvas canvas) {
         super.draw(canvas);
 
