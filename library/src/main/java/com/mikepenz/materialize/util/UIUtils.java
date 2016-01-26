@@ -281,7 +281,7 @@ public class UIUtils {
         ColorDrawable clrActive = new ColorDrawable(selected_color);
         states.addState(new int[]{android.R.attr.state_selected}, clrActive);
 
-        states.addState(new int[]{}, ContextCompat.getDrawable(ctx, getSelectableBackground(ctx)));
+        states.addState(new int[]{}, getSelectableBackground(ctx));
         //if possible we enable animating across states
         if (animate && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             int duration = ctx.getResources().getInteger(android.R.integer.config_shortAnimTime);
@@ -319,13 +319,13 @@ public class UIUtils {
     }
 
     /**
-     * helper to get the system default selectable background
+     * helper to get the system default selectable background res
      *
      * @param ctx
      * @return
      */
-    public static int getSelectableBackground(Context ctx) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+    public static int getSelectableBackgroundRes(Context ctx) {
+        if (Build.VERSION.SDK_INT >= 11) {
             // If we're running on Honeycomb or newer, then we can use the Theme's
             // selectableItemBackground to ensure that the View has a pressed state
             TypedValue outValue = new TypedValue();
@@ -336,6 +336,22 @@ public class UIUtils {
             TypedValue outValue = new TypedValue();
             ctx.getTheme().resolveAttribute(android.R.attr.itemBackground, outValue, true);
             return outValue.resourceId;
+        }
+    }
+
+
+    /**
+     * helper to get the system default selectable background
+     *
+     * @param ctx
+     * @return
+     */
+    public static Drawable getSelectableBackground(Context ctx) {
+        int selectableBackgroundRes = getSelectableBackgroundRes(ctx);
+        if (Build.VERSION.SDK_INT >= 11) {
+            return ContextCompat.getDrawable(ctx, selectableBackgroundRes);
+        } else {
+            return UIUtils.getCompatDrawable(ctx, selectableBackgroundRes);
         }
     }
 }
