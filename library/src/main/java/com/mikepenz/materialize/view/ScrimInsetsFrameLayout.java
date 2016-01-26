@@ -92,14 +92,6 @@ public class ScrimInsetsFrameLayout extends FrameLayout implements IScrimInsetsL
     }
 
     @Override
-    protected boolean fitSystemWindows(Rect insets) {
-        mInsets = new Rect(insets);
-        setWillNotDraw(mInsetForeground == null);
-        ViewCompat.postInvalidateOnAnimation(this);
-        return super.fitSystemWindows(insets);
-    }
-
-    @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
 

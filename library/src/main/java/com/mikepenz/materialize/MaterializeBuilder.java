@@ -141,7 +141,7 @@ public class MaterializeBuilder {
     }
 
     // set non translucent statusBar mode
-    protected boolean mTranslucentStatusBar = true;
+    protected boolean mTranslucentStatusBar = false;
 
     /**
      * Set to false to disable the use of a translucent statusBar
@@ -161,7 +161,7 @@ public class MaterializeBuilder {
 
 
     // set to disable the translucent statusBar Programmatically
-    protected boolean mTranslucentStatusBarProgrammatically = true;
+    protected boolean mTranslucentStatusBarProgrammatically = false;
 
     /**
      * set this to false if you want no translucent statusBar. or
@@ -393,7 +393,7 @@ public class MaterializeBuilder {
             );
 
             //if we have a translucent navigation bar set the bottom margin
-            if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 19) {
+            if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 21) {
                 layoutParamsContentView.bottomMargin = UIUtils.getNavigationBarHeight(mActivity);
             }
 
@@ -435,7 +435,7 @@ public class MaterializeBuilder {
             );
 
             //if we have a translucent navigation bar set the bottom margin
-            if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 19) {
+            if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 21) {
                 layoutParamsContentView.bottomMargin = UIUtils.getNavigationBarHeight(mActivity);
             }
 
@@ -454,7 +454,7 @@ public class MaterializeBuilder {
 
         //set the flags if we want to hide the system ui
         if (mSystemUIHidden) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (Build.VERSION.SDK_INT >= 11) {
                 View decorView = this.mActivity.getWindow().getDecorView();
                 decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -468,36 +468,22 @@ public class MaterializeBuilder {
 
         //do some magic specific to the statusBar
         if (!alreadyInflated && mTranslucentStatusBar) {
-            if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
-                UIUtils.setTranslucentStatusFlag(mActivity, true);
-            }
-            if (Build.VERSION.SDK_INT >= 19) {
-                if (mTranslucentStatusBarProgrammatically) {
-                    mActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                }
-            }
             if (Build.VERSION.SDK_INT >= 21) {
                 UIUtils.setTranslucentStatusFlag(mActivity, false);
                 if (mTranslucentStatusBarProgrammatically) {
                     mActivity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+                    mActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                 }
             }
         }
 
         //do some magic specific to the navigationBar
         if (!alreadyInflated && mTranslucentNavigationBar) {
-            if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
-                UIUtils.setTranslucentNavigationFlag(mActivity, true);
-            }
-            if (Build.VERSION.SDK_INT >= 19) {
-                if (mTranslucentNavigationBarProgrammatically) {
-                    mActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                    UIUtils.setTranslucentNavigationFlag(mActivity, true);
-                }
-            }
             if (Build.VERSION.SDK_INT >= 21) {
                 if (mTranslucentNavigationBarProgrammatically) {
                     mActivity.getWindow().setNavigationBarColor(Color.TRANSPARENT);
+                    mActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+                    UIUtils.setTranslucentNavigationFlag(mActivity, true);
                 }
             }
         }
