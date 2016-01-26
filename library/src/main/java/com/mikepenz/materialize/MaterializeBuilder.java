@@ -393,9 +393,11 @@ public class MaterializeBuilder {
             );
 
             //if we have a translucent navigation bar set the bottom margin
+            /*
             if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 21) {
                 layoutParamsContentView.bottomMargin = UIUtils.getNavigationBarHeight(mActivity);
             }
+            */
 
             //add the contentView to the drawer content frameLayout
             mScrimInsetsLayout.getView().addView(originalContentView, layoutParamsContentView);
@@ -435,9 +437,11 @@ public class MaterializeBuilder {
             );
 
             //if we have a translucent navigation bar set the bottom margin
+            /*
             if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 21) {
                 layoutParamsContentView.bottomMargin = UIUtils.getNavigationBarHeight(mActivity);
             }
+            */
 
             mContainer.addView(originalContentView, layoutParamsContentView);
 
