@@ -9,6 +9,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.mikepenz.materialize.util.UIUtils;
@@ -63,10 +64,6 @@ public class MaterializeBuilder {
      */
     public MaterializeBuilder withRootView(ViewGroup rootView) {
         this.mRootView = rootView;
-
-        //disable the translucent statusBar we don't need it
-        withTranslucentStatusBar(false);
-
         return this;
     }
 
@@ -124,41 +121,17 @@ public class MaterializeBuilder {
         return this;
     }
 
-
-    // set actionbar Compatibility mode
-    protected boolean mTranslucentActionBarCompatibility = false;
-
-    /**
-     * Set this to true to use a translucent StatusBar in an activity with a good old
-     * ActionBar. Should be a rare scenario.
-     *
-     * @param translucentActionBarCompatibility
-     * @return
-     */
-    public MaterializeBuilder withTranslucentActionBarCompatibility(boolean translucentActionBarCompatibility) {
-        this.mTranslucentActionBarCompatibility = translucentActionBarCompatibility;
-        return this;
-    }
-
-    // set non translucent statusBar mode
-    protected boolean mTranslucentStatusBar = false;
+    //set to true if we want a transparent statusbar
+    protected boolean mTransparentStatusBar = false;
 
     /**
-     * Set to false to disable the use of a translucent statusBar
-     *
-     * @param translucentStatusBar
+     * @param transparentStatusBar
      * @return
      */
-    public MaterializeBuilder withTranslucentStatusBar(boolean translucentStatusBar) {
-        this.mTranslucentStatusBar = translucentStatusBar;
-
-        //if we disable the translucentStatusBar it should be disabled at all
-        if (!translucentStatusBar) {
-            this.mTranslucentStatusBarProgrammatically = false;
-        }
+    public MaterializeBuilder withTransparentStatusBar(boolean transparentStatusBar) {
+        this.mTransparentStatusBar = transparentStatusBar;
         return this;
     }
-
 
     // set to disable the translucent statusBar Programmatically
     protected boolean mTranslucentStatusBarProgrammatically = false;
@@ -172,10 +145,18 @@ public class MaterializeBuilder {
      */
     public MaterializeBuilder withTranslucentStatusBarProgrammatically(boolean translucentStatusBarProgrammatically) {
         this.mTranslucentStatusBarProgrammatically = translucentStatusBarProgrammatically;
-        //if we enable the programmatically translucent statusBar we want also the normal statusBar behavior
-        if (translucentStatusBarProgrammatically) {
-            this.mTranslucentStatusBar = true;
-        }
+        return this;
+    }
+
+    //set to true if we want a transparent statusBar
+    protected boolean mStatusBarPadding = false;
+
+    /**
+     * @param statusBarPadding
+     * @return
+     */
+    public MaterializeBuilder withStatusBarPadding(boolean statusBarPadding) {
+        this.mStatusBarPadding = statusBarPadding;
         return this;
     }
 
@@ -193,25 +174,6 @@ public class MaterializeBuilder {
         return this;
     }
 
-    // set non translucent NavigationBar mode
-    protected boolean mTranslucentNavigationBar = false;
-
-    /**
-     * Set to true if you use a translucent NavigationBar
-     *
-     * @param translucentNavigationBar
-     * @return
-     */
-    public MaterializeBuilder withTranslucentNavigationBar(boolean translucentNavigationBar) {
-        this.mTranslucentNavigationBar = translucentNavigationBar;
-
-        //if we disable the translucentNavigationBar it should be disabled at all
-        if (!translucentNavigationBar) {
-            this.mTranslucentNavigationBarProgrammatically = false;
-        }
-
-        return this;
-    }
 
     // set to disable the translucent statusBar Programmatically
     protected boolean mTranslucentNavigationBarProgrammatically = false;
@@ -225,9 +187,30 @@ public class MaterializeBuilder {
     public MaterializeBuilder withTranslucentNavigationBarProgrammatically(boolean translucentNavigationBarProgrammatically) {
         this.mTranslucentNavigationBarProgrammatically = translucentNavigationBarProgrammatically;
         //if we enable the programmatically translucent navigationBar we want also the normal navigationBar behavior
-        if (translucentNavigationBarProgrammatically) {
-            this.mTranslucentNavigationBar = true;
-        }
+        return this;
+    }
+
+    //set to true if we want a transparent navigationBar
+    protected boolean mTransparentNavigationBar = false;
+
+    /**
+     * @param navigationBar
+     * @return
+     */
+    public MaterializeBuilder withTransparentNavigationBar(boolean navigationBar) {
+        this.mTransparentNavigationBar = navigationBar;
+        return this;
+    }
+
+    //set to true if we want a transparent navigationBar
+    protected boolean mNavigationBarPadding = false;
+
+    /**
+     * @param navigationBarPadding
+     * @return
+     */
+    public MaterializeBuilder withNavigationBarPadding(boolean navigationBarPadding) {
+        this.mNavigationBarPadding = navigationBarPadding;
         return this;
     }
 
@@ -264,7 +247,6 @@ public class MaterializeBuilder {
         this.mFullscreen = fullscreen;
 
         if (fullscreen) {
-            withTranslucentStatusBar(false);
             withTranslucentNavigationBarProgrammatically(true);
             withTintedStatusBar(false);
             withTintedNavigationBar(false);
@@ -341,8 +323,6 @@ public class MaterializeBuilder {
             throw new RuntimeException("please pass an activity");
         }
 
-        boolean alreadyInflated = false;
-
         if (mUseScrimInsetsLayout) {
             // if the user has not set a drawerLayout use the default one :D
             mScrimInsetsLayout = (ScrimInsetsFrameLayout) mActivity.getLayoutInflater().inflate(R.layout.materialize, mRootView, false);
@@ -355,7 +335,7 @@ public class MaterializeBuilder {
             //get the content view
             View originalContentView = mRootView.getChildAt(0);
 
-            alreadyInflated = originalContentView.getId() == R.id.materialize_root;
+            boolean alreadyInflated = originalContentView.getId() == R.id.materialize_root;
 
             // define the statusBarColor
             if (mStatusBarColor == 0 && mStatusBarColorRes != -1) {
@@ -372,11 +352,6 @@ public class MaterializeBuilder {
             //if we are fullscreen remove all insets
             mScrimInsetsLayout.setSystemUIVisible(!mFullscreen && !mSystemUIHidden);
 
-            //do some magic specific to the statusBar
-            if (!alreadyInflated && mTranslucentStatusBar) {
-                mScrimInsetsLayout.getView().setPadding(0, UIUtils.getStatusBarHeight(mActivity), 0, 0);
-            }
-
             //only add the new layout if it wasn't done before
             if (!alreadyInflated) {
                 // remove the contentView
@@ -391,13 +366,6 @@ public class MaterializeBuilder {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
             );
-
-            //if we have a translucent navigation bar set the bottom margin
-            /*
-            if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 21) {
-                layoutParamsContentView.bottomMargin = UIUtils.getNavigationBarHeight(mActivity);
-            }
-            */
 
             //add the contentView to the drawer content frameLayout
             mScrimInsetsLayout.getView().addView(originalContentView, layoutParamsContentView);
@@ -435,14 +403,6 @@ public class MaterializeBuilder {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
             );
-
-            //if we have a translucent navigation bar set the bottom margin
-            /*
-            if (!mFullscreen && mTranslucentNavigationBar && Build.VERSION.SDK_INT >= 21) {
-                layoutParamsContentView.bottomMargin = UIUtils.getNavigationBarHeight(mActivity);
-            }
-            */
-
             mContainer.addView(originalContentView, layoutParamsContentView);
 
             //make sure we have the correct layoutParams
@@ -471,25 +431,55 @@ public class MaterializeBuilder {
 
 
         //do some magic specific to the statusBar
-        if (!alreadyInflated && mTranslucentStatusBar) {
+        if (mTranslucentStatusBarProgrammatically) {
             if (Build.VERSION.SDK_INT >= 21) {
+                //this.mActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
                 UIUtils.setTranslucentStatusFlag(mActivity, false);
-                if (mTranslucentStatusBarProgrammatically) {
-                    mActivity.getWindow().setStatusBarColor(Color.TRANSPARENT);
-                    mActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                }
             }
         }
 
         //do some magic specific to the navigationBar
-        if (!alreadyInflated && mTranslucentNavigationBar) {
+        if (mTranslucentNavigationBarProgrammatically) {
             if (Build.VERSION.SDK_INT >= 21) {
-                if (mTranslucentNavigationBarProgrammatically) {
-                    mActivity.getWindow().setNavigationBarColor(Color.TRANSPARENT);
-                    mActivity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-                    UIUtils.setTranslucentNavigationFlag(mActivity, true);
-                }
+                //this.mActivity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                UIUtils.setTranslucentNavigationFlag(mActivity, true);
             }
+        }
+
+        if (mTransparentStatusBar || mTransparentNavigationBar) {
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            this.mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        }
+
+        //we do this if we want a complete transparent statusBar
+        if (mTransparentStatusBar) {
+            // finally change the color
+            if (Build.VERSION.SDK_INT >= 21) {
+                UIUtils.setTranslucentStatusFlag(mActivity, false);
+                this.mActivity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+            }
+        }
+        //we do this if we want a complete transparent navigationBar
+        if (mTransparentNavigationBar) {
+            // finally change the color
+            if (Build.VERSION.SDK_INT >= 21) {
+                UIUtils.setTranslucentNavigationFlag(mActivity, true);
+                this.mActivity.getWindow().setNavigationBarColor(Color.TRANSPARENT);
+            }
+        }
+
+
+        //do some magic specific to the statusBar
+        int paddingTop = 0;
+        if (mStatusBarPadding && Build.VERSION.SDK_INT >= 21) {
+            paddingTop = UIUtils.getStatusBarHeight(mActivity);
+        }
+        int paddingBottom = 0;
+        if (mNavigationBarPadding && Build.VERSION.SDK_INT >= 21) {
+            paddingBottom = UIUtils.getNavigationBarHeight(mActivity);
+        }
+        if (mStatusBarPadding || mNavigationBarPadding && Build.VERSION.SDK_INT >= 21) {
+            mScrimInsetsLayout.getView().setPadding(0, paddingTop, 0, paddingBottom);
         }
 
         //set activity to null as we do not need it anymore
@@ -498,4 +488,6 @@ public class MaterializeBuilder {
         //create a Materialize object with the builder
         return new Materialize(this);
     }
+
+
 }
