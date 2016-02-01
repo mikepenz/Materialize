@@ -30,4 +30,6 @@ public interface IScrimInsetsLayout {
     void setOnInsetsCallback(OnInsetsCallback onInsetsCallback);
 
     OnInsetsCallback getOnInsetsCallback();
+
+    void setFitsSystemWindows(boolean fitSystemWindows);
 }
