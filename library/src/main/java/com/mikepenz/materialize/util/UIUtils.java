@@ -19,6 +19,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 
 import com.mikepenz.materialize.R;
 
@@ -377,5 +378,22 @@ public class UIUtils {
     public static int getScreenHeight(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return metrics.heightPixels;
+    }
+
+    /**
+     * set the alpha of a specific view
+     *
+     * @param v
+     * @param value
+     */
+    public static void setAlpha(View v, float value) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+            AlphaAnimation alpha = new AlphaAnimation(value, value);
+            alpha.setDuration(0); // Make animation instant
+            alpha.setFillAfter(true); // Tell it to persist after the animation ends
+            v.startAnimation(alpha);
+        } else {
+            v.setAlpha(value);
+        }
     }
 }
