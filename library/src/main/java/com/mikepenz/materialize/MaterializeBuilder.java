@@ -453,7 +453,9 @@ public class MaterializeBuilder {
 
         if (mTransparentStatusBar || mTransparentNavigationBar) {
             // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-            this.mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            if (Build.VERSION.SDK_INT >= 21) {
+                this.mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            }
         }
 
         //we do this if we want a complete transparent statusBar
