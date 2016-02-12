@@ -393,6 +393,11 @@ public class MaterializeBuilder {
             //add the drawerLayout to the root
             mRootView.addView(mContentRoot, mContainerLayoutParams);
         } else {
+            //we need an container in this case
+            if (mContainer == null) {
+                throw new RuntimeException("please pass a container");
+            }
+
             View originalContentView = mRootView.getChildAt(0);
 
             // remove the contentView
