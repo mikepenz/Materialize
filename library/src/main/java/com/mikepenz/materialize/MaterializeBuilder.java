@@ -393,6 +393,11 @@ public class MaterializeBuilder {
             //add the drawerLayout to the root
             mRootView.addView(mContentRoot, mContainerLayoutParams);
         } else {
+            //we need an container in this case
+            if (mContainer == null) {
+                throw new RuntimeException("please pass a container");
+            }
+
             View originalContentView = mRootView.getChildAt(0);
 
             // remove the contentView
@@ -418,7 +423,7 @@ public class MaterializeBuilder {
 
         //set the flags if we want to hide the system ui
         if (mSystemUIHidden) {
-            if (Build.VERSION.SDK_INT >= 11) {
+            if (Build.VERSION.SDK_INT >= 16) {
                 View decorView = this.mActivity.getWindow().getDecorView();
                 decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -448,7 +453,9 @@ public class MaterializeBuilder {
 
         if (mTransparentStatusBar || mTransparentNavigationBar) {
             // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-            this.mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            if (Build.VERSION.SDK_INT >= 21) {
+                this.mActivity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            }
         }
 
         //we do this if we want a complete transparent statusBar
