@@ -423,7 +423,7 @@ public class MaterializeBuilder {
 
         //set the flags if we want to hide the system ui
         if (mSystemUIHidden) {
-            if (Build.VERSION.SDK_INT >= 11) {
+            if (Build.VERSION.SDK_INT >= 16) {
                 View decorView = this.mActivity.getWindow().getDecorView();
                 decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
