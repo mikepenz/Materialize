@@ -1,6 +1,7 @@
 package com.mikepenz.materialize.app;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
 import com.mikepenz.aboutlibraries.LibsConfiguration;
@@ -9,6 +10,9 @@ import com.mikepenz.aboutlibraries.LibsConfiguration;
  * Created by mikepenz on 27.03.15.
  */
 public class CustomApplication extends Application {
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+    }
 
     @Override
     public void onCreate() {

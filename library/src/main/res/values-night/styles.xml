@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DAY-NIGHT -->
+    <style name="MaterialTheme.DayNight" parent="MaterialTheme" />
+
+    <style name="MaterialTheme.TranslucentStatus.DayNight" parent="MaterialTheme.TranslucentStatus" />
+
+    <style name="MaterialTheme.ActionBar.DayNight" parent="MaterialTheme.ActionBar" />
+
+    <style name="MaterialTheme.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.ActionBar.TranslucentStatus" />
+
+    <style name="MaterialTheme.DarkToolbar.DayNight" parent="MaterialTheme" />
+
+    <style name="MaterialTheme.DarkToolbar.TranslucentStatus.DayNight" parent="MaterialTheme.TranslucentStatus" />
+
+    <style name="MaterialTheme.DarkToolbar.ActionBar.DayNight" parent="MaterialTheme.ActionBar" />
+
+    <style name="MaterialTheme.DarkToolbar.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.ActionBar.TranslucentStatus" />
+</resources>

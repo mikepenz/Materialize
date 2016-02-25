@@ -10,7 +10,7 @@
         <b>Materialize</b> comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior&#8230;
         ]]>
     </string>
-    <string name="library_materialize_libraryVersion">0.8.2</string>
+    <string name="library_materialize_libraryVersion">0.8.5</string>
     <string name="library_materialize_libraryWebsite">https://github.com/mikepenz/Materialize</string>
     <string name="library_materialize_licenseId">apache_2_0</string>
     <string name="library_materialize_isOpenSource">true</string>
