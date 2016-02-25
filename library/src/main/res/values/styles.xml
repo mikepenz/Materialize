@@ -30,18 +30,18 @@
         <!-- Material specific values -->
     </style>
 
-    <style name="MaterialBaseTheme" parent="MaterialBaseBaseTheme"></style>
+    <style name="MaterialBaseTheme" parent="MaterialBaseBaseTheme" />
 
-    <style name="MaterialTheme" parent="MaterialBaseTheme"></style>
+    <style name="MaterialTheme" parent="MaterialBaseTheme" />
 
-    <style name="MaterialTheme.TranslucentStatus" parent="MaterialTheme"></style>
+    <style name="MaterialTheme.TranslucentStatus" parent="MaterialTheme" />
 
     <style name="MaterialTheme.ActionBar" parent="MaterialTheme">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
     </style>
 
-    <style name="MaterialTheme.ActionBar.TranslucentStatus" parent="MaterialTheme.ActionBar"></style>
+    <style name="MaterialTheme.ActionBar.TranslucentStatus" parent="MaterialTheme.ActionBar" />
 
     <!-- LIGHT -->
     <style name="MaterialBaseBaseTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
@@ -56,18 +56,18 @@
         <!-- Material specific values -->
     </style>
 
-    <style name="MaterialBaseTheme.Light" parent="MaterialBaseBaseTheme.Light"></style>
+    <style name="MaterialBaseTheme.Light" parent="MaterialBaseBaseTheme.Light" />
 
-    <style name="MaterialTheme.Light" parent="MaterialBaseTheme.Light"></style>
+    <style name="MaterialTheme.Light" parent="MaterialBaseTheme.Light" />
 
-    <style name="MaterialTheme.Light.TranslucentStatus" parent="MaterialTheme.Light"></style>
+    <style name="MaterialTheme.Light.TranslucentStatus" parent="MaterialTheme.Light" />
 
     <style name="MaterialTheme.Light.ActionBar" parent="MaterialTheme.Light">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">false</item>
     </style>
 
-    <style name="MaterialTheme.Light.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.ActionBar"></style>
+    <style name="MaterialTheme.Light.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.ActionBar" />
 
 
     <!-- LIGHT DARK ACTIONBAR -->
@@ -87,11 +87,11 @@
         <!-- Material specific values -->
     </style>
 
-    <style name="MaterialBaseTheme.Light.DarkToolbar" parent="MaterialBaseBaseTheme.Light.DarkToolbar"></style>
+    <style name="MaterialBaseTheme.Light.DarkToolbar" parent="MaterialBaseBaseTheme.Light.DarkToolbar" />
 
-    <style name="MaterialTheme.Light.DarkToolbar" parent="MaterialBaseTheme.Light.DarkToolbar"></style>
+    <style name="MaterialTheme.Light.DarkToolbar" parent="MaterialBaseTheme.Light.DarkToolbar" />
 
-    <style name="MaterialTheme.Light.DarkToolbar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar"></style>
+    <style name="MaterialTheme.Light.DarkToolbar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar" />
 
     <style name="MaterialTheme.Light.DarkToolbar.ActionBar" parent="MaterialTheme.Light.DarkToolbar">
         <item name="windowActionBar">true</item>
@@ -101,8 +101,24 @@
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 
-    <style name="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar"></style>
+    <style name="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar" />
 
+    <!-- DAY-NIGHT -->
+    <style name="MaterialTheme.DayNight" parent="MaterialTheme.Light" />
+
+    <style name="MaterialTheme.TranslucentStatus.DayNight" parent="MaterialTheme.Light.TranslucentStatus" />
+
+    <style name="MaterialTheme.ActionBar.DayNight" parent="MaterialTheme.Light.ActionBar" />
+
+    <style name="MaterialTheme.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.Light.ActionBar.TranslucentStatus" />
+
+    <style name="MaterialTheme.DarkToolbar.DayNight" parent="MaterialTheme.Light.DarkToolbar" />
+
+    <style name="MaterialTheme.DarkToolbar.TranslucentStatus.DayNight" parent="MaterialTheme.Light.DarkToolbar.TranslucentStatus" />
+
+    <style name="MaterialTheme.DarkToolbar.ActionBar.DayNight" parent="MaterialTheme.Light.DarkToolbar.ActionBar" />
+
+    <style name="MaterialTheme.DarkToolbar.ActionBar.TranslucentStatus.DayNight" parent="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus" />
 
     <!-- DrawerArrowStyles -->
     <style name="Material.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
