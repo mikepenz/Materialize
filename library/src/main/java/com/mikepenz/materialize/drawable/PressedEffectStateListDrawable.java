@@ -28,6 +28,19 @@ public class PressedEffectStateListDrawable extends StateListDrawable {
         this.selectionColor = selectionColor;
     }
 
+    public PressedEffectStateListDrawable(Drawable drawable, Drawable selectedDrawable, int color, int selectionColor) {
+        super();
+
+        drawable = drawable.mutate();
+        selectedDrawable = selectedDrawable.mutate();
+
+        addState(new int[]{android.R.attr.state_selected}, selectedDrawable);
+        addState(new int[]{}, drawable);
+
+        this.color = color;
+        this.selectionColor = selectionColor;
+    }
+
     @Override
     protected boolean onStateChange(int[] states) {
         boolean isStatePressedInArray = false;
