@@ -286,9 +286,12 @@ public class ImageHolder {
         //if we have an icon then we want to set it
         if (icon != null) {
             //if we got a different color for the selectedIcon we need a StateList
-
             if (selectedIcon != null) {
-                imageView.setImageDrawable(UIUtils.getIconStateList(icon, selectedIcon));
+                if (tinted) {
+                    imageView.setImageDrawable(new PressedEffectStateListDrawable(icon, selectedIcon, iconColor, selectedIconColor));
+                } else {
+                    imageView.setImageDrawable(UIUtils.getIconStateList(icon, selectedIcon));
+                }
             } else if (tinted) {
                 imageView.setImageDrawable(new PressedEffectStateListDrawable(icon, iconColor, selectedIconColor));
             } else {
