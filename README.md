@@ -4,7 +4,7 @@
 **Materialize** comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior...
 
 #What's in?
-* Never worry about API specific differences again (**minSdk 10**)
+* Never worry about API specific differences again (**minSdk 14**)
 
 * MaterializeBuilder -> Materialize
  * Let the library handle if you want
@@ -21,7 +21,7 @@
  * AppCompat base
  * Defines all colors
  * Comes with many variations
- * All compatible down to **minSdk 10**
+ * All compatible down to **minSdk 14**
 
 * A huge collection of helper methods via the UIUtils, safe down to API 10
  * getThemeColor
@@ -48,7 +48,7 @@ To follow
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
-compile "com.mikepenz:materialize:0.9.0@aar"
+compile "com.mikepenz:materialize:1.0.0@aar"
 compile "com.android.support:appcompat-v7:${supportLibVersion}"
 
 ```

@@ -19,7 +19,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
 
 import com.mikepenz.materialize.R;
 
@@ -81,27 +80,7 @@ public class UIUtils {
      * @param drawableRes
      */
     public static void setBackground(View v, @DrawableRes int drawableRes) {
-        setBackground(v, getCompatDrawable(v.getContext(), drawableRes));
-    }
-
-    /**
-     * helper method to get the drawable by its resource. specific to the correct android version
-     *
-     * @param c
-     * @param drawableRes
-     * @return
-     */
-    public static Drawable getCompatDrawable(Context c, @DrawableRes int drawableRes) {
-        Drawable d = null;
-        try {
-            if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                d = c.getResources().getDrawable(drawableRes);
-            } else {
-                d = c.getResources().getDrawable(drawableRes, c.getTheme());
-            }
-        } catch (Exception ex) {
-        }
-        return d;
+        setBackground(v, ContextCompat.getDrawable(v.getContext(), drawableRes));
     }
 
     /**
@@ -284,11 +263,9 @@ public class UIUtils {
 
         states.addState(new int[]{}, getSelectableBackground(ctx));
         //if possible we enable animating across states
-        if (animate && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            int duration = ctx.getResources().getInteger(android.R.integer.config_shortAnimTime);
-            states.setEnterFadeDuration(duration);
-            states.setExitFadeDuration(duration);
-        }
+        int duration = ctx.getResources().getInteger(android.R.integer.config_shortAnimTime);
+        states.setEnterFadeDuration(duration);
+        states.setExitFadeDuration(duration);
         return states;
     }
 
@@ -326,18 +303,10 @@ public class UIUtils {
      * @return
      */
     public static int getSelectableBackgroundRes(Context ctx) {
-        if (Build.VERSION.SDK_INT >= 11) {
-            // If we're running on Honeycomb or newer, then we can use the Theme's
-            // selectableItemBackground to ensure that the View has a pressed state
-            TypedValue outValue = new TypedValue();
-            //it is important here to not use the android.R because this wouldn't add the latest drawable
-            ctx.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
-            return outValue.resourceId;
-        } else {
-            TypedValue outValue = new TypedValue();
-            ctx.getTheme().resolveAttribute(android.R.attr.itemBackground, outValue, true);
-            return outValue.resourceId;
-        }
+        TypedValue outValue = new TypedValue();
+        //it is important here to not use the android.R because this wouldn't add the latest drawable
+        ctx.getTheme().resolveAttribute(R.attr.selectableItemBackground, outValue, true);
+        return outValue.resourceId;
     }
 
 
@@ -349,11 +318,7 @@ public class UIUtils {
      */
     public static Drawable getSelectableBackground(Context ctx) {
         int selectableBackgroundRes = getSelectableBackgroundRes(ctx);
-        if (Build.VERSION.SDK_INT >= 11) {
-            return ContextCompat.getDrawable(ctx, selectableBackgroundRes);
-        } else {
-            return UIUtils.getCompatDrawable(ctx, selectableBackgroundRes);
-        }
+        return ContextCompat.getDrawable(ctx, selectableBackgroundRes);
     }
 
 
@@ -378,22 +343,5 @@ public class UIUtils {
     public static int getScreenHeight(Context context) {
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return metrics.heightPixels;
-    }
-
-    /**
-     * set the alpha of a specific view
-     *
-     * @param v
-     * @param value
-     */
-    public static void setAlpha(View v, float value) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            AlphaAnimation alpha = new AlphaAnimation(value, value);
-            alpha.setDuration(0); // Make animation instant
-            alpha.setFillAfter(true); // Tell it to persist after the animation ends
-            v.startAnimation(alpha);
-        } else {
-            v.setAlpha(value);
-        }
     }
 }
