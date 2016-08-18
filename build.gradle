@@ -19,8 +19,8 @@ allprojects {
 
 ext {
     compileSdkVersion = 24
-    buildToolsVersion = "24.0.0"
-    supportLibVersion = "24.0.0"
+    buildToolsVersion = "24.0.1"
+    supportLibVersion = "24.2.0"
 }
 
 task wrapper(type: Wrapper) {
