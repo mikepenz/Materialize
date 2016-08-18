@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -128,7 +129,7 @@ public class ImageHolder {
         Drawable icon = mIcon;
 
         if (mIconRes != -1) {
-            icon = UIUtils.getCompatDrawable(ctx, mIconRes);
+            icon = ContextCompat.getDrawable(ctx, mIconRes);
         } else if (mUri != null) {
             try {
                 InputStream inputStream = ctx.getContentResolver().openInputStream(mUri);
