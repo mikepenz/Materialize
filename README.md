@@ -68,7 +68,7 @@ compile "com.android.support:appcompat-v7:${supportLibVersion}"
     new MaterializeBuilder()
         .withActivity(this)
         .withFullscreen(true)
-        .withTranslucentStatusBar(true)
+        .withTranslucentStatusBarProgrammatically(true)
         .withTintedStatusBar(true).build();
 ```
 
