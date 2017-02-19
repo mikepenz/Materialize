@@ -48,7 +48,7 @@ To follow
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
-compile "com.mikepenz:materialize:1.0.0@aar"
+compile "com.mikepenz:materialize:1.0.1@aar"
 compile "com.android.support:appcompat-v7:${supportLibVersion}"
 
 ```
