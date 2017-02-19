@@ -11,9 +11,9 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 24
-        versionCode 100
-        versionName '1.0.0'
+        targetSdkVersion 25
+        versionCode 101
+        versionName '1.0.1'
 
         applicationVariants.all { variant ->
             variant.outputs.each { output ->
@@ -48,20 +48,22 @@ android {
 }
 
 dependencies {
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
     compile "com.android.support:cardview-v7:${rootProject.ext.supportLibVersion}"
 
     compile project(':library')
 
     //used to generate the drawer on the left
     //https://github.com/mikepenz/MaterialDrawer
-    compile('com.mikepenz:materialdrawer:5.4.0@aar') {
+    compile('com.mikepenz:materialdrawer:5.8.1@aar') {
         transitive = true
+        exclude group: 'com.android.support'
         exclude group: 'com.mikepenz', module: 'materialize'
     }
 
     // used to generate the Open Source section
     // https://github.com/mikepenz/AboutLibraries
-    compile('com.mikepenz:aboutlibraries:5.7.3@aar') {
+    compile('com.mikepenz:aboutlibraries:5.9.3@aar') {
         transitive = true
         exclude group: 'com.android.support'
     }

@@ -262,10 +262,14 @@ public class UIUtils {
         states.addState(new int[]{android.R.attr.state_selected}, clrActive);
 
         states.addState(new int[]{}, getSelectableBackground(ctx));
-        //if possible we enable animating across states
-        int duration = ctx.getResources().getInteger(android.R.integer.config_shortAnimTime);
-        states.setEnterFadeDuration(duration);
-        states.setExitFadeDuration(duration);
+        
+        //if possible and wanted we enable animating across states
+        if (animate) {
+            int duration = ctx.getResources().getInteger(android.R.integer.config_shortAnimTime);
+            states.setEnterFadeDuration(duration);
+            states.setExitFadeDuration(duration);
+        }
+        
         return states;
     }
 

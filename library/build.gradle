@@ -7,9 +7,9 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 24
-        versionCode 100
-        versionName '1.0.0'
+        targetSdkVersion 25
+        versionCode 101
+        versionName '1.0.1'
     }
     buildTypes {
         release {
@@ -28,5 +28,6 @@ apply from: 'gradle-mvn-push.gradle'
 apply from: 'gradle-jcenter-push.gradle'
 
 dependencies {
+    compile "com.android.support:support-compat:${rootProject.ext.supportLibVersion}"
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
 }
