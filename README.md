@@ -1,9 +1,9 @@
-#Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)[![Join the chat at https://gitter.im/mikepenz/Materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/Materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Materialize  [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.mikepenz/materialize)[![Join the chat at https://gitter.im/mikepenz/Materialize](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mikepenz/Materialize?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 **Materialize** comes with useful helper classes, the complete material color palette, and many additional utils. Use its theme as base. Let it manage your StatusBar, NavigationBar, Fullscreen behavior...
 
-#What's in?
+# What's in?
 * Never worry about API specific differences again (**minSdk 14**)
 
 * MaterializeBuilder -> Materialize
@@ -32,19 +32,19 @@
 * KeyboardUtil
  * Handle the Layout (adjust_resize) if you use the FULL_SCREEN flag
 
-#Preview
-##Demo
+# Preview
+## Demo
 To follow
 
-##Screenshots
+## Screenshots
 ![Image](https://raw.githubusercontent.com/mikepenz/Materialize/develop/DEV/screenshots/screenshot1_small.png)
 ![Image](https://raw.githubusercontent.com/mikepenz/Materialize/develop/DEV/screenshots/screenshot2_small.png)
 
 ![Image](https://raw.githubusercontent.com/mikepenz/Materialize/develop/DEV/screenshots/screenshot3_small.png)
 
 
-#Include in your project
-##Using Maven
+# Include in your project
+## Using Maven
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
@@ -53,8 +53,8 @@ compile "com.android.support:appcompat-v7:${supportLibVersion}"
 
 ```
 
-##How to use
-###MaterializeBuilder
+## How to use
+### MaterializeBuilder
 
 ```java
     //minimal configuration
@@ -72,17 +72,17 @@ compile "com.android.support:appcompat-v7:${supportLibVersion}"
         .withTintedStatusBar(true).build();
 ```
 
-###Materialize Theme
+### Materialize Theme
 
 To use one of the provided themes just use a `MaterialTheme`, `MaterialTheme.*` theme as parent
 
-#Developed By
+# Developed By
 
 * Mike Penz 
  * [mikepenz.com](http://mikepenz.com) - <mikepenz@gmail.com>
  * [paypal.me/mikepenz](http://paypal.me/mikepenz)
 
-#License
+# License
 
     Copyright 2016 Mike Penz
 
