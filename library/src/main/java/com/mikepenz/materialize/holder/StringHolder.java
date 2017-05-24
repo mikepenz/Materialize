@@ -9,10 +9,10 @@ import android.widget.TextView;
  * Created by mikepenz on 13.07.15.
  */
 public class StringHolder {
-    private String mText;
+    private CharSequence mText;
     private int mTextRes = -1;
 
-    public StringHolder(String text) {
+    public StringHolder(CharSequence text) {
         this.mText = text;
     }
 
@@ -20,7 +20,7 @@ public class StringHolder {
         this.mTextRes = textRes;
     }
 
-    public String getText() {
+    public CharSequence getText() {
         return mText;
     }
 
@@ -89,6 +89,6 @@ public class StringHolder {
 
     @Override
     public String toString() {
-        return mText;
+        return mText.toString();
     }
 }

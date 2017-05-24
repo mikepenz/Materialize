@@ -14,6 +14,7 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
@@ -64,13 +65,10 @@ public class UIUtils {
      * @param v
      * @param d
      */
+    @Deprecated
     @SuppressLint("NewApi")
     public static void setBackground(View v, Drawable d) {
-        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            v.setBackgroundDrawable(d);
-        } else {
-            v.setBackground(d);
-        }
+        ViewCompat.setBackground(v, d);
     }
 
     /**
@@ -80,7 +78,7 @@ public class UIUtils {
      * @param drawableRes
      */
     public static void setBackground(View v, @DrawableRes int drawableRes) {
-        setBackground(v, ContextCompat.getDrawable(v.getContext(), drawableRes));
+        ViewCompat.setBackground(v, ContextCompat.getDrawable(v.getContext(), drawableRes));
     }
 
     /**
