@@ -16,6 +16,10 @@ public class StringHolder {
         this.mText = text;
     }
 
+    public StringHolder(String text) {
+        this.mText = text;
+    }
+
     public StringHolder(@StringRes int textRes) {
         this.mTextRes = textRes;
     }
@@ -63,7 +67,7 @@ public class StringHolder {
 
     public String getText(Context ctx) {
         if (mText != null) {
-            return mText;
+            return mText.toString();
         } else if (mTextRes != -1) {
             return ctx.getString(mTextRes);
         }
