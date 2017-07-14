@@ -16,6 +16,10 @@ public class StringHolder {
         this.mText = text;
     }
 
+    public StringHolder(String text) {
+        this.mText = text;
+    }
+
     public StringHolder(@StringRes int textRes) {
         this.mTextRes = textRes;
     }
