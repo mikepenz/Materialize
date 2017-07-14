@@ -14,14 +14,6 @@ android {
         targetSdkVersion 25
         versionCode 102
         versionName '1.0.2'
-
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                def file = output.outputFile
-                def fileName = file.name.replace(".apk", "-v" + versionName + "-c" + versionCode + ".apk")
-                output.outputFile = new File(file.parentFile, fileName)
-            }
-        }
     }
     buildTypes {
         debug {
