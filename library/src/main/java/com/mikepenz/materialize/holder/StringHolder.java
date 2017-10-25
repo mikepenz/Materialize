@@ -93,6 +93,12 @@ public class StringHolder {
 
     @Override
     public String toString() {
-        return mText.toString();
+        if (mText != null) {
+            return mText.toString();
+        } else if (mTextRes != -1) {
+            return "StringRes:" + mTextRes;
+        } else {
+            return "";
+        }
     }
 }
