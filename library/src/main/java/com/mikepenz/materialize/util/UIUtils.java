@@ -14,6 +14,7 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -38,7 +39,7 @@ public class UIUtils {
     public static int getThemeColor(Context ctx, @AttrRes int attr) {
         TypedValue tv = new TypedValue();
         if (ctx.getTheme().resolveAttribute(attr, tv, true)) {
-            return tv.data;
+            return ResourcesCompat.getColor(ctx.getResources(), tv.resourceId, ctx.getTheme());
         }
         return 0;
     }
@@ -54,7 +55,7 @@ public class UIUtils {
     public static int getThemeColorFromAttrOrRes(Context ctx, @AttrRes int attr, @ColorRes int res) {
         int color = getThemeColor(ctx, attr);
         if (color == 0) {
-            color = ContextCompat.getColor(ctx, res);
+            color = ResourcesCompat.getColor(ctx.getResources(), res, ctx.getTheme());
         }
         return color;
     }
