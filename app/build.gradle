@@ -40,14 +40,15 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
-    compile "com.android.support:cardview-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.supportLibVersion}"
 
-    compile project(':library')
+    implementation project(':library')
 
     //used to generate the drawer on the left
     //https://github.com/mikepenz/MaterialDrawer
-    compile('com.mikepenz:materialdrawer:5.9.5@aar') {
+    implementation('com.mikepenz:materialdrawer:5.9.5@aar') {
         transitive = true
         exclude group: 'com.android.support'
         exclude group: 'com.mikepenz', module: 'materialize'
@@ -55,7 +56,7 @@ dependencies {
 
     // used to generate the Open Source section
     // https://github.com/mikepenz/AboutLibraries
-    compile('com.mikepenz:aboutlibraries:5.9.6@aar') {
+    implementation('com.mikepenz:aboutlibraries:5.9.6@aar') {
         transitive = true
         exclude group: 'com.android.support'
     }
