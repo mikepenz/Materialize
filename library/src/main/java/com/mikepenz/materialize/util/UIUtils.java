@@ -39,7 +39,7 @@ public class UIUtils {
     public static int getThemeColor(Context ctx, @AttrRes int attr) {
         TypedValue tv = new TypedValue();
         if (ctx.getTheme().resolveAttribute(attr, tv, true)) {
-            return ResourcesCompat.getColor(ctx.getResources(), tv.resourceId, ctx.getTheme());
+            return tv.data;
         }
         return 0;
     }
