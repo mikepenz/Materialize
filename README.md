@@ -48,10 +48,13 @@ To follow
 The Materialize Library is pushed to [Maven Central](http://search.maven.org/#search|ga|1|g%3A%22com.mikepenz%22), so you just need to add the following dependency to your `build.gradle`.
 
 ```javascript
-implementation "com.mikepenz:materialize:1.1.2@aar"
-implementation "com.android.support:appcompat-v7:${supportLibVersion}"
-
+// the following uses the new androidx dependencies
+implementation "com.mikepenz:materialize:1.2.0-rc01@aar"
+implementation "com.google.android.material:material:${materialVersion}"
+implementation "androidx.appcompat:appcompat:${androidXVersion}"
 ```
+
+To use appcompat please use a version smaller than 1.2.0. (See the releases on GitHub)
 
 ## How to use
 ### MaterializeBuilder
