@@ -14,6 +14,8 @@ android {
         targetSdkVersion setup.targetSdk
         versionCode release.versionCode
         versionName release.versionName
+
+        setProperty("archivesBaseName", "Materialize-v$versionName-c$versionCode")
     }
     buildTypes {
         debug {
