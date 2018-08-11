@@ -1,7 +1,7 @@
 package com.mikepenz.materialize.app;
 
 import android.app.Application;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.view.View;
 
 import com.mikepenz.aboutlibraries.LibsConfiguration;

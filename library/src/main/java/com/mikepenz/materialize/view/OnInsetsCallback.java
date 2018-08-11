@@ -1,6 +1,6 @@
 package com.mikepenz.materialize.view;
 
-import android.support.v4.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public interface OnInsetsCallback {
     void onInsetsChanged(WindowInsetsCompat insets);

@@ -1,15 +1,16 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion setup.compileSdk
+    buildToolsVersion setup.buildTools
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 112
-        versionName '1.1.2'
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
+        versionCode release.versionCode
+        versionName release.versionName
+
+        resValue "string", "materialize_lib_version", "${versionName}"
     }
     buildTypes {
         release {
@@ -24,9 +25,9 @@ android {
     }
 }
 
-apply from: 'gradle-mvn-push.gradle'
-apply from: 'gradle-jcenter-push.gradle'
-
 dependencies {
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.google.android.material:material:${versions.materialVersion}"
+    implementation "androidx.appcompat:appcompat:${versions.androidXVersion}"
 }
+
+apply from: '../gradle-release.gradle'

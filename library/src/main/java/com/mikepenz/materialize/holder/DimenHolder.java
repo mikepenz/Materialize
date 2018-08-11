@@ -1,7 +1,7 @@
 package com.mikepenz.materialize.holder;
 
 import android.content.Context;
-import android.support.annotation.DimenRes;
+import androidx.annotation.DimenRes;
 
 import com.mikepenz.materialize.util.UIUtils;
 
