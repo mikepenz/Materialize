@@ -62,7 +62,7 @@
     </style>
 
     <!-- General Theme override to change the Dialog design -->
-    <style name="MaterialBaseTheme.Dialog" parent="Theme.AppCompat.Dialog">
+    <style name="MaterialBaseTheme.Dialog" parent="Theme.MaterialComponents.Dialog">
         <item name="colorPrimary">@color/materialize_primary</item>
         <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
         <item name="colorAccent">@color/materialize_accent</item>
@@ -73,7 +73,7 @@
         <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
     </style>
 
-    <style name="MaterialBaseTheme.Light.Dialog" parent="Theme.AppCompat.Light.Dialog">
+    <style name="MaterialBaseTheme.Light.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorPrimary">@color/materialize_primary</item>
         <item name="colorPrimaryDark">@color/materialize_primary_dark</item>
         <item name="colorAccent">@color/materialize_accent</item>

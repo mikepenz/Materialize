@@ -18,7 +18,7 @@
 
 <resources>
     <!-- NORMAL -->
-    <style name="MaterialBaseBaseTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="MaterialBaseBaseTheme" parent="Theme.MaterialComponents.NoActionBar.Bridge">
         <!-- Here we setting appcompat’s actionBarStyle -->
         <item name="drawerArrowStyle">@style/Material.DrawerArrowStyle</item>
 
@@ -44,7 +44,7 @@
     <style name="MaterialTheme.ActionBar.TranslucentStatus" parent="MaterialTheme.ActionBar" />
 
     <!-- LIGHT -->
-    <style name="MaterialBaseBaseTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MaterialBaseBaseTheme.Light" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Here we setting appcompat’s actionBarStyle -->
         <item name="drawerArrowStyle">@style/Material.Light.DrawerArrowStyle</item>
 
@@ -71,7 +71,7 @@
 
 
     <!-- LIGHT DARK ACTIONBAR -->
-    <style name="MaterialBaseBaseTheme.Light.DarkToolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MaterialBaseBaseTheme.Light.DarkToolbar" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
 
@@ -98,7 +98,7 @@
         <item name="windowNoTitle">false</item>
 
         <!-- only set this if we use an ActionBar -->
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Dark</item>
     </style>
 
     <style name="MaterialTheme.Light.DarkToolbar.ActionBar.TranslucentStatus" parent="MaterialTheme.Light.DarkToolbar" />

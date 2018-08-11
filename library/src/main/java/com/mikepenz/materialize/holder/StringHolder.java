@@ -1,7 +1,7 @@
 package com.mikepenz.materialize.holder;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 import android.view.View;
 import android.widget.TextView;
 

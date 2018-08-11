@@ -6,14 +6,14 @@ try {
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion setup.compileSdk
+    buildToolsVersion setup.buildTools
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 112
-        versionName '1.1.2'
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
+        versionCode release.versionCode
+        versionName release.versionName
     }
     buildTypes {
         debug {
@@ -40,9 +40,9 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
-    implementation "com.android.support:cardview-v7:${rootProject.ext.supportLibVersion}"
+    implementation "androidx.appcompat:appcompat:${versions.androidXVersion}"
+    implementation "androidx.recyclerview:recyclerview:${versions.androidXVersion}"
+    implementation "androidx.cardview:cardview:${versions.androidXVersion}"
 
     implementation project(':library')
 
