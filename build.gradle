@@ -13,8 +13,8 @@ buildscript {
         ]
 
         versions = [
-                androidXVersion: '1.0.0-rc01',
-                materialVersion: '1.0.0-rc01'
+                androidXVersion: '1.0.0',
+                materialVersion: '1.0.0'
         ]
     }
 
