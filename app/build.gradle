@@ -50,7 +50,7 @@ dependencies {
 
     //used to generate the drawer on the left
     //https://github.com/mikepenz/MaterialDrawer
-    implementation('com.mikepenz:materialdrawer:6.1.0') {
+    implementation('com.mikepenz:materialdrawer:6.1.2') {
         transitive = true
         exclude group: 'com.android.support'
         exclude group: 'com.mikepenz', module: 'materialize'
@@ -58,7 +58,7 @@ dependencies {
 
     // used to generate the Open Source section
     // https://github.com/mikepenz/AboutLibraries
-    implementation('com.mikepenz:aboutlibraries:6.2.0') {
+    implementation('com.mikepenz:aboutlibraries:6.2.1') {
         transitive = true
         exclude group: 'com.android.support'
     }
