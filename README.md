@@ -49,7 +49,7 @@ The Materialize Library is pushed to [Maven Central](http://search.maven.org/#se
 
 ```javascript
 // the following uses the new androidx dependencies
-implementation "com.mikepenz:materialize:1.2.0"
+implementation "com.mikepenz:materialize:1.2.1"
 implementation "com.google.android.material:material:${materialVersion}"
 implementation "androidx.appcompat:appcompat:${androidXVersion}"
 ```
